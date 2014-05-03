@@ -16,4 +16,7 @@
 @property (strong, nonatomic) ChildTubeAppDelegate *delegate;
 
 
+@property (strong, nonatomic) NSMutableArray *addTvSeriesFromResultsArray;
+
+
 @end

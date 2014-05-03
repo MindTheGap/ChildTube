@@ -7,7 +7,6 @@
 //
 
 #import "MainGridViewController.h"
-#import "MainCollectionViewCellObject.h"
 #import "UIImageView+WebCache.h"
 #import "ServerMessageTypes.h"
 #import "DataEntities.h"

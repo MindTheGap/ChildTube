@@ -7,6 +7,9 @@
 //
 
 #import "AddTvSeriesFromResultsViewController.h"
+#import "SSCheckMark.h"
+#import "DataEntities.h"
+#import "UIImageView+WebCache.h"
 
 @interface AddTvSeriesFromResultsViewController ()
 
@@ -33,6 +36,44 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (NSInteger) numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+{
+    return 1;
+}
+
+- (NSInteger) collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return [[self tvSeriesResultsArray] count];
+}
+
+- (UICollectionViewCell *) collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"AddToTvSeriesFromResultsCell" forIndexPath:indexPath];
+    
+    UIImageView *imageView = (UIImageView *)[cell viewWithTag:100];
+    UILabel *label = (UILabel *)[cell viewWithTag:200];
+    SSCheckMark *checkMark = (SSCheckMark *)[cell viewWithTag:300];
+    
+    TvSeries *tvSeriesObject = [[self tvSeriesResultsArray] objectAtIndex:[indexPath row]];
+    if ([tvSeriesObject seriesImage] != nil)
+    {
+        [imageView setImage:[tvSeriesObject seriesImage]];
+    }
+    else
+    {
+        NSLog(@"Fetching image from path: %@", [tvSeriesObject seriesImagePath]);
+        [imageView setImageWithURL:[NSURL URLWithString:[tvSeriesObject seriesImagePath]]
+                  placeholderImage:[UIImage imageNamed:@"anonymous.png"]];
+    }
+    
+    [checkMark setCheckMarkStyle:SSCheckMarkStyleGrayedOut];
+    [checkMark setChecked:[tvSeriesObject checked]];
+    
+    [label setText:[tvSeriesObject name]];
+    
+    return cell;
 }
 
 - (IBAction)addSelectedButtonClicked:(id)sender

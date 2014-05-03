@@ -13,5 +13,6 @@
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSString *seriesImagePath;
 @property (strong, nonatomic) UIImage  *seriesImage;
+@property (assign) BOOL checked;
 
 @end

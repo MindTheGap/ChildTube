@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AddTvSeriesFromResultsViewController : UIViewController
+@interface AddTvSeriesFromResultsViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate>
+
+@property (strong, nonatomic) NSMutableArray *tvSeriesResultsArray;
 
 @property (weak, nonatomic) IBOutlet UILabel *numSelectedLabel;
 

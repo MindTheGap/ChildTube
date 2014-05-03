@@ -7,6 +7,8 @@
 //
 
 #import "SearchTvSeriesViewController.h"
+#import "AddTvSeriesFromResultsViewController.h"
+#import "DataEntities.h"
 
 @interface SearchTvSeriesViewController ()
 
@@ -53,26 +55,39 @@
     NSDictionary *object = [[NSDictionary alloc] initWithObjectsAndKeys:[NSString stringWithFormat:@"%d", SearchPhrase], @"Type", [[self searchText] text], @"Text", nil];
     [[self.delegate commManager] sendObject:object completion:^(NSDictionary *json)
      {
-         NSArray *allTvSeries = [json objectForKey:@"TvSeriesResults"];
+         NSArray *searchTvSeriesArray = [json objectForKey:@"TvSeriesResults"];
+         NSMutableArray *mutableArray = [[NSMutableArray alloc] init];
          
-         for (int i = 0; i < [allTvSeries count]; i++) {
-             NSDictionary *tvSeriesDictionary = [allTvSeries objectAtIndex:i];
+         for (int i = 0; i < [searchTvSeriesArray count]; i++) {
+             NSDictionary *tvSeriesDictionary = [searchTvSeriesArray objectAtIndex:i];
              
-//             TvSeries *tvSeries = [[TvSeries alloc] init];
-//             
+             TvSeries *tvSeries = [[TvSeries alloc] init];
+             
              NSString *tvSeriesName = [tvSeriesDictionary objectForKey:@"Name"];
-//             if ([tvSeriesName class] != [NSNull class])
-//                 [tvSeries setName:tvSeriesName];
-//             
+             if ([tvSeriesName class] != [NSNull class])
+                 [tvSeries setName:tvSeriesName];
+             
              NSString *tvSeriesImagePath = [tvSeriesDictionary objectForKey:@"SeriesImagePath"];
-//             if ([tvSeriesImagePath class] != [NSNull class])
-//                 [tvSeries setSeriesImagePath:tvSeriesImagePath];
-//             
-//             [[self tvSeriesArray] addObject:tvSeries];
+             if ([tvSeriesImagePath class] != [NSNull class])
+                 [tvSeries setSeriesImagePath:tvSeriesImagePath];
+             
+             [tvSeries setChecked:false];
+             
+             [mutableArray addObject:tvSeries];
          }
          
-//         dispatch_async(dispatch_get_main_queue(), ^{ [[self collectionView] reloadData]; });
+         self.addTvSeriesFromResultsArray = mutableArray;
+         [self performSegueWithIdentifier:@"ToAddTvSeriesFromResultsSegue" sender:self];
      }];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"ToAddTvSeriesFromResultsSegue"])
+    {
+        AddTvSeriesFromResultsViewController *addTvSeriesFromResultsViewController = [segue destinationViewController];
+        [addTvSeriesFromResultsViewController setTvSeriesResultsArray:[self addTvSeriesFromResultsArray]];
+    }
 }
 
 @end
