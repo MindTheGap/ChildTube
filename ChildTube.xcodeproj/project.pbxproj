@@ -20,7 +20,6 @@
 		76EE1B2018F1754A0040FA71 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 76EE1B1E18F1754A0040FA71 /* InfoPlist.strings */; };
 		76EE1B2218F1754A0040FA71 /* ChildTubeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 76EE1B2118F1754A0040FA71 /* ChildTubeTests.m */; };
 		76EE1B2D18F1758A0040FA71 /* Storyboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76EE1B2C18F1758A0040FA71 /* Storyboard_iPhone.storyboard */; };
-		76EE1B3418F181220040FA71 /* MainGridCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76EE1B3318F181220040FA71 /* MainGridCollectionViewController.m */; };
 		76EE1B3818F1845E0040FA71 /* MainCollectionViewCellObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 76EE1B3718F1845E0040FA71 /* MainCollectionViewCellObject.m */; };
 		76EE1B5718F1868C0040FA71 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 76EE1B3B18F1868C0040FA71 /* MKAnnotationView+WebCache.m */; };
 		76EE1B5818F1868C0040FA71 /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 76EE1B3D18F1868C0040FA71 /* NSData+ImageContentType.m */; };
@@ -55,12 +54,16 @@
 		76EE1B9F1914E5360040FA71 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 76EE1B951914E5360040FA71 /* AFURLResponseSerialization.m */; };
 		76EE1BA01914E5360040FA71 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 76EE1B971914E5360040FA71 /* AFURLSessionManager.m */; };
 		76EE1BB31914E5540040FA71 /* ServerMessageTypes.m in Sources */ = {isa = PBXBuildFile; fileRef = 76EE1BA61914E5540040FA71 /* ServerMessageTypes.m */; };
-		76EE1BB41914E5540040FA71 /* Wedding.m in Sources */ = {isa = PBXBuildFile; fileRef = 76EE1BA91914E5540040FA71 /* Wedding.m */; };
+		76EE1BB41914E5540040FA71 /* TvSeries.m in Sources */ = {isa = PBXBuildFile; fileRef = 76EE1BA91914E5540040FA71 /* TvSeries.m */; };
 		76EE1BB51914E5540040FA71 /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 76EE1BAC1914E5540040FA71 /* Comment.m */; };
 		76EE1BB61914E5540040FA71 /* Greeting.m in Sources */ = {isa = PBXBuildFile; fileRef = 76EE1BAE1914E5540040FA71 /* Greeting.m */; };
 		76EE1BB71914E5540040FA71 /* Like.m in Sources */ = {isa = PBXBuildFile; fileRef = 76EE1BB01914E5540040FA71 /* Like.m */; };
 		76EE1BBC1914E5690040FA71 /* Toast+UIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76EE1BB91914E5690040FA71 /* Toast+UIView.m */; };
 		76EE1BBD1914E5690040FA71 /* UIView+AutoLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 76EE1BBB1914E5690040FA71 /* UIView+AutoLayout.m */; };
+		76EE1BC31915401B0040FA71 /* DataEntities.m in Sources */ = {isa = PBXBuildFile; fileRef = 76EE1BC21915401B0040FA71 /* DataEntities.m */; };
+		76EE1BCD191551100040FA71 /* MainGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76EE1BCC191551100040FA71 /* MainGridViewController.m */; };
+		76EE1BD219155BC50040FA71 /* SearchTvSeriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76EE1BD119155BC50040FA71 /* SearchTvSeriesViewController.m */; };
+		76EE1BD6191565810040FA71 /* AddTvSeriesFromResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76EE1BD5191565810040FA71 /* AddTvSeriesFromResultsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,8 +94,6 @@
 		76EE1B1F18F1754A0040FA71 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		76EE1B2118F1754A0040FA71 /* ChildTubeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChildTubeTests.m; sourceTree = "<group>"; };
 		76EE1B2C18F1758A0040FA71 /* Storyboard_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Storyboard_iPhone.storyboard; path = Storyboards/Storyboard_iPhone.storyboard; sourceTree = "<group>"; };
-		76EE1B3218F181220040FA71 /* MainGridCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainGridCollectionViewController.h; path = ViewControllers/MainGridCollectionViewController.h; sourceTree = "<group>"; };
-		76EE1B3318F181220040FA71 /* MainGridCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainGridCollectionViewController.m; path = ViewControllers/MainGridCollectionViewController.m; sourceTree = "<group>"; };
 		76EE1B3618F1845E0040FA71 /* MainCollectionViewCellObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainCollectionViewCellObject.h; path = HelperClasses/MainCollectionViewCellObject.h; sourceTree = "<group>"; };
 		76EE1B3718F1845E0040FA71 /* MainCollectionViewCellObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainCollectionViewCellObject.m; path = HelperClasses/MainCollectionViewCellObject.m; sourceTree = "<group>"; };
 		76EE1B3A18F1868C0040FA71 /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
@@ -163,8 +164,8 @@
 		76EE1B971914E5360040FA71 /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
 		76EE1BA51914E5540040FA71 /* ServerMessageTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerMessageTypes.h; sourceTree = "<group>"; };
 		76EE1BA61914E5540040FA71 /* ServerMessageTypes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerMessageTypes.m; sourceTree = "<group>"; };
-		76EE1BA81914E5540040FA71 /* Wedding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wedding.h; sourceTree = "<group>"; };
-		76EE1BA91914E5540040FA71 /* Wedding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Wedding.m; sourceTree = "<group>"; };
+		76EE1BA81914E5540040FA71 /* TvSeries.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TvSeries.h; sourceTree = "<group>"; };
+		76EE1BA91914E5540040FA71 /* TvSeries.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TvSeries.m; sourceTree = "<group>"; };
 		76EE1BAB1914E5540040FA71 /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
 		76EE1BAC1914E5540040FA71 /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
 		76EE1BAD1914E5540040FA71 /* Greeting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Greeting.h; sourceTree = "<group>"; };
@@ -175,6 +176,14 @@
 		76EE1BB91914E5690040FA71 /* Toast+UIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Toast+UIView.m"; sourceTree = "<group>"; };
 		76EE1BBA1914E5690040FA71 /* UIView+AutoLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+AutoLayout.h"; sourceTree = "<group>"; };
 		76EE1BBB1914E5690040FA71 /* UIView+AutoLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+AutoLayout.m"; sourceTree = "<group>"; };
+		76EE1BC11915401B0040FA71 /* DataEntities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataEntities.h; sourceTree = "<group>"; };
+		76EE1BC21915401B0040FA71 /* DataEntities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataEntities.m; sourceTree = "<group>"; };
+		76EE1BCB191551100040FA71 /* MainGridViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainGridViewController.h; path = ViewControllers/MainGridViewController.h; sourceTree = "<group>"; };
+		76EE1BCC191551100040FA71 /* MainGridViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainGridViewController.m; path = ViewControllers/MainGridViewController.m; sourceTree = "<group>"; };
+		76EE1BD019155BC50040FA71 /* SearchTvSeriesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchTvSeriesViewController.h; path = ViewControllers/SearchTvSeriesViewController.h; sourceTree = "<group>"; };
+		76EE1BD119155BC50040FA71 /* SearchTvSeriesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchTvSeriesViewController.m; path = ViewControllers/SearchTvSeriesViewController.m; sourceTree = "<group>"; };
+		76EE1BD4191565810040FA71 /* AddTvSeriesFromResultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddTvSeriesFromResultsViewController.h; path = ViewControllers/AddTvSeriesFromResultsViewController.h; sourceTree = "<group>"; };
+		76EE1BD5191565810040FA71 /* AddTvSeriesFromResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddTvSeriesFromResultsViewController.m; path = ViewControllers/AddTvSeriesFromResultsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -289,8 +298,9 @@
 		76EE1B2E18F180120040FA71 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				76EE1B3218F181220040FA71 /* MainGridCollectionViewController.h */,
-				76EE1B3318F181220040FA71 /* MainGridCollectionViewController.m */,
+				76EE1BD3191565670040FA71 /* AddTvSeriesFromResults */,
+				76EE1BCF19155BA90040FA71 /* SearchTvSeries */,
+				76EE1BCE19155BA20040FA71 /* MainGrid */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -427,8 +437,10 @@
 		76EE1BA71914E5540040FA71 /* DataEntities */ = {
 			isa = PBXGroup;
 			children = (
-				76EE1BA81914E5540040FA71 /* Wedding.h */,
-				76EE1BA91914E5540040FA71 /* Wedding.m */,
+				76EE1BA81914E5540040FA71 /* TvSeries.h */,
+				76EE1BA91914E5540040FA71 /* TvSeries.m */,
+				76EE1BC11915401B0040FA71 /* DataEntities.h */,
+				76EE1BC21915401B0040FA71 /* DataEntities.m */,
 			);
 			path = DataEntities;
 			sourceTree = "<group>";
@@ -474,6 +486,33 @@
 				76EE1BBB1914E5690040FA71 /* UIView+AutoLayout.m */,
 			);
 			name = "UIView+AutoLayout";
+			sourceTree = "<group>";
+		};
+		76EE1BCE19155BA20040FA71 /* MainGrid */ = {
+			isa = PBXGroup;
+			children = (
+				76EE1BCB191551100040FA71 /* MainGridViewController.h */,
+				76EE1BCC191551100040FA71 /* MainGridViewController.m */,
+			);
+			name = MainGrid;
+			sourceTree = "<group>";
+		};
+		76EE1BCF19155BA90040FA71 /* SearchTvSeries */ = {
+			isa = PBXGroup;
+			children = (
+				76EE1BD019155BC50040FA71 /* SearchTvSeriesViewController.h */,
+				76EE1BD119155BC50040FA71 /* SearchTvSeriesViewController.m */,
+			);
+			name = SearchTvSeries;
+			sourceTree = "<group>";
+		};
+		76EE1BD3191565670040FA71 /* AddTvSeriesFromResults */ = {
+			isa = PBXGroup;
+			children = (
+				76EE1BD4191565810040FA71 /* AddTvSeriesFromResultsViewController.h */,
+				76EE1BD5191565810040FA71 /* AddTvSeriesFromResultsViewController.m */,
+			);
+			name = AddTvSeriesFromResults;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -576,7 +615,7 @@
 			files = (
 				76EE1B981914E5360040FA71 /* AFHTTPRequestOperation.m in Sources */,
 				76EE1B6218F1868C0040FA71 /* UIImage+MultiFormat.m in Sources */,
-				76EE1BB41914E5540040FA71 /* Wedding.m in Sources */,
+				76EE1BB41914E5540040FA71 /* TvSeries.m in Sources */,
 				76EE1B5D18F1868C0040FA71 /* SDWebImageDownloaderOperation.m in Sources */,
 				76EE1B3818F1845E0040FA71 /* MainCollectionViewCellObject.m in Sources */,
 				76EE1B5A18F1868C0040FA71 /* SDWebImageCompat.m in Sources */,
@@ -587,17 +626,18 @@
 				76EE1BB31914E5540040FA71 /* ServerMessageTypes.m in Sources */,
 				76EE1B6118F1868C0040FA71 /* UIImage+GIF.m in Sources */,
 				76EE1BA01914E5360040FA71 /* AFURLSessionManager.m in Sources */,
+				76EE1BCD191551100040FA71 /* MainGridViewController.m in Sources */,
 				76EE1B831914E52F0040FA71 /* UIWebView+AFNetworking.m in Sources */,
 				76EE1B9C1914E5360040FA71 /* AFSecurityPolicy.m in Sources */,
 				76EE1B9F1914E5360040FA71 /* AFURLResponseSerialization.m in Sources */,
 				76EE1B801914E52F0040FA71 /* UIButton+AFNetworking.m in Sources */,
 				76EE1B7E1914E52F0040FA71 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
+				76EE1BD219155BC50040FA71 /* SearchTvSeriesViewController.m in Sources */,
 				76EE1BBC1914E5690040FA71 /* Toast+UIView.m in Sources */,
 				76EE1B6C1914E4F20040FA71 /* CommManager.m in Sources */,
 				76EE1B5F18F1868C0040FA71 /* SDWebImagePrefetcher.m in Sources */,
 				76EE1B9D1914E5360040FA71 /* AFURLConnectionOperation.m in Sources */,
 				76EE1BB71914E5540040FA71 /* Like.m in Sources */,
-				76EE1B3418F181220040FA71 /* MainGridCollectionViewController.m in Sources */,
 				76EE1BB51914E5540040FA71 /* Comment.m in Sources */,
 				76EE1B9E1914E5360040FA71 /* AFURLRequestSerialization.m in Sources */,
 				76EE1B0918F1754A0040FA71 /* main.m in Sources */,
@@ -607,9 +647,11 @@
 				76EE1B6018F1868C0040FA71 /* UIButton+WebCache.m in Sources */,
 				76EE1B5718F1868C0040FA71 /* MKAnnotationView+WebCache.m in Sources */,
 				76EE1B9B1914E5360040FA71 /* AFNetworkReachabilityManager.m in Sources */,
+				76EE1BC31915401B0040FA71 /* DataEntities.m in Sources */,
 				76EE1B5818F1868C0040FA71 /* NSData+ImageContentType.m in Sources */,
 				76EE1B0D18F1754A0040FA71 /* ChildTubeAppDelegate.m in Sources */,
 				76EE1B811914E52F0040FA71 /* UIImageView+AFNetworking.m in Sources */,
+				76EE1BD6191565810040FA71 /* AddTvSeriesFromResultsViewController.m in Sources */,
 				76EE1B6418F1868C0040FA71 /* UIImageView+WebCache.m in Sources */,
 				76EE1BB61914E5540040FA71 /* Greeting.m in Sources */,
 				76EE1B5E18F1868C0040FA71 /* SDWebImageManager.m in Sources */,

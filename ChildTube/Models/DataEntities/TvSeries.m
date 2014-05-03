@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 MTG. All rights reserved.
 //
 
-#import "Wedding.h"
+#import "TvSeries.h"
 
-@implementation Wedding
+@implementation TvSeries
 
 @end

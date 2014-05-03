@@ -10,7 +10,7 @@
 #import "ServerMessageTypes.h"
 #import <Foundation/NSJSONSerialization.h>
 
-#define SERVER_HOST @"http://192.168.94.1:4296/"
+#define SERVER_HOST @"http://192.168.175.1:4297/"
 
 
 @implementation CommManager

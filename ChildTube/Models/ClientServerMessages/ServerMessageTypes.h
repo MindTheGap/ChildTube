@@ -12,7 +12,7 @@
 
 enum CommandType
 {
-    GetTvSeriesDetails,
+    GetAllTvSeries,
     SearchPhrase
 };
 

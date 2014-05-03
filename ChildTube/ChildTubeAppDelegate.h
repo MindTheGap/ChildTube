@@ -7,9 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CommManager.h"
 
 @interface ChildTubeAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+
+@property (strong, nonatomic) CommManager *commManager;
+
 
 @end

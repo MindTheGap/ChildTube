@@ -12,6 +12,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    self.commManager = [[CommManager alloc] init];
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
@@ -19,7 +21,7 @@
     UIStoryboard*  sb = [UIStoryboard storyboardWithName:@"Storyboard_iPhone"
                                                   bundle:nil];
     
-    UICollectionViewController *cvc = [sb instantiateViewControllerWithIdentifier:@"mainCollectionViewID"];
+    UICollectionViewController *cvc = [sb instantiateViewControllerWithIdentifier:@"mainViewControllerID"];
     
     self.window.rootViewController = cvc;
 
