@@ -13,6 +13,8 @@
 
 @interface AddTvSeriesFromResultsViewController ()
 
+@property (strong, nonatomic) NSMutableArray *selectedItems;
+
 @end
 
 @implementation AddTvSeriesFromResultsViewController
@@ -30,6 +32,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    [self setSelectedItems:[[NSMutableArray alloc] init]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -76,9 +80,32 @@
     return cell;
 }
 
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    // Determine the selected items by using the indexPath
+    TvSeries *tvSeries = [[self tvSeriesResultsArray] objectAtIndex:indexPath.row];
+    // Add the selected item into the array
+    [[self selectedItems] addObject:tvSeries];
+    
+    int currentNum = [[[self numSelectedLabel] text] intValue];
+    [[self numSelectedLabel] setText:[NSString stringWithFormat:@"%d",++currentNum]];
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    TvSeries *tvSeries = [[self tvSeriesResultsArray] objectAtIndex:indexPath.row];
+    [[self selectedItems] removeObject:tvSeries];
+    
+    int currentNum = [[[self numSelectedLabel] text] intValue];
+    [[self numSelectedLabel] setText:[NSString stringWithFormat:@"%d",--currentNum]];
+}
+
 - (IBAction)addSelectedButtonClicked:(id)sender
 {
-    
+    if ([[self selectedItems] count] > 0)
+    {
+        
+    }
 }
 
 @end
