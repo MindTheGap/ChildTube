@@ -15,5 +15,7 @@
 
 @property (strong, nonatomic) CommManager *commManager;
 
+@property (strong, nonatomic) UIStoryboard *iPhoneSB;
+
 
 @end

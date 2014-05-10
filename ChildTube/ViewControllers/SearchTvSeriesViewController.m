@@ -13,6 +13,7 @@
 @interface SearchTvSeriesViewController ()
 
 - (void)searchTvSeries;
+@property (strong, nonatomic) AddTvSeriesFromResultsViewController *addTvSeriesCollectionViewController;
 
 @end
 
@@ -27,12 +28,26 @@
     return self;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self.navigationController setToolbarHidden:NO animated:YES];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [self.navigationController setToolbarHidden:YES animated:YES];
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
     self.delegate = (ChildTubeAppDelegate *)[[UIApplication sharedApplication] delegate];
+    self.addTvSeriesCollectionViewController = [[self.delegate iPhoneSB] instantiateViewControllerWithIdentifier:@"AddTvSeriesFromResultsIdentifier"];
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -77,17 +92,15 @@
          }
          
          self.addTvSeriesFromResultsArray = mutableArray;
-         [self performSegueWithIdentifier:@"ToAddTvSeriesFromResultsSegue" sender:self];
+         if ([self addTvSeriesCollectionViewController])
+         {
+             [[self addTvSeriesCollectionViewController] setTvSeriesResultsArray:[self addTvSeriesFromResultsArray]];
+             dispatch_async(dispatch_get_main_queue(), ^{
+                 [[self navigationController] pushViewController:[self addTvSeriesCollectionViewController] animated:YES];
+             });
+         }
      }];
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([[segue identifier] isEqualToString:@"ToAddTvSeriesFromResultsSegue"])
-    {
-        AddTvSeriesFromResultsViewController *addTvSeriesFromResultsViewController = [segue destinationViewController];
-        [addTvSeriesFromResultsViewController setTvSeriesResultsArray:[self addTvSeriesFromResultsArray]];
-    }
-}
 
 @end

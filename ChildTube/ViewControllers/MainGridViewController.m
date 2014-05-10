@@ -10,9 +10,11 @@
 #import "UIImageView+WebCache.h"
 #import "ServerMessageTypes.h"
 #import "DataEntities.h"
-
+#import "SearchTvSeriesViewController.h"
 
 @interface MainGridViewController ()
+
+@property (strong, nonatomic) SearchTvSeriesViewController *searchViewController;
 
 @end
 
@@ -27,15 +29,31 @@
     return self;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self.navigationController setToolbarHidden:YES animated:NO];
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [self.navigationController setToolbarHidden:YES animated:NO];
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+}
+
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
+    [[self navigationController] setToolbarHidden:YES];
+    
     [self setTvSeriesArray:[[NSMutableArray alloc] init]];
     
     self.delegate = (ChildTubeAppDelegate *)[[UIApplication sharedApplication] delegate];
+    self.searchViewController = [[self.delegate iPhoneSB] instantiateViewControllerWithIdentifier:@"searchTvSeriesViewControllerIdentifier"];
+    [self.searchViewController setDelegate:self];
     
     NSDictionary *object = [[NSDictionary alloc] initWithObjectsAndKeys:[NSString stringWithFormat:@"%d", GetAllTvSeries], @"Type", nil];
     [[self.delegate commManager] sendObject:object completion:^(NSDictionary *json)
@@ -60,6 +78,11 @@
          
          dispatch_async(dispatch_get_main_queue(), ^{ [[self collectionView] reloadData]; });
      }];
+}
+
+- (IBAction)plusButtonTouched:(id)sender
+{
+    [[self navigationController] pushViewController:[self searchViewController] animated:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -92,7 +115,7 @@
     }
     else
     {
-        NSLog(@"Fetching image from path: %@", [tvSeriesObject seriesImagePath]);
+//        NSLog(@"Fetching image from path: %@", [tvSeriesObject seriesImagePath]);
         [imageView setImageWithURL:[NSURL URLWithString:[tvSeriesObject seriesImagePath]]
                        placeholderImage:[UIImage imageNamed:@"anonymous.png"]];
     }

@@ -18,10 +18,10 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     
-    UIStoryboard*  sb = [UIStoryboard storyboardWithName:@"Storyboard_iPhone"
-                                                  bundle:nil];
+    [self setIPhoneSB:[UIStoryboard storyboardWithName:@"Storyboard_iPhone"
+                                                  bundle:nil]];
     
-    UICollectionViewController *cvc = [sb instantiateViewControllerWithIdentifier:@"mainViewControllerID"];
+    UICollectionViewController *cvc = [[self iPhoneSB] instantiateViewControllerWithIdentifier:@"mainNavigationControllerID"];
     
     self.window.rootViewController = cvc;
 

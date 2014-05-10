@@ -7,11 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MainGridViewController.h"
 
 @interface AddTvSeriesFromResultsViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate>
 
 @property (strong, nonatomic) NSMutableArray *tvSeriesResultsArray;
 
-@property (weak, nonatomic) IBOutlet UILabel *numSelectedLabel;
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *addButton;
+
+@property (strong, nonatomic) MainGridViewController *mainGridViewController;
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath;
+- (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath;
 
 @end

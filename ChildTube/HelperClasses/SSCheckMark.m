@@ -17,6 +17,8 @@
 {
     [super drawRect:rect];
     
+    NSLog(@"drawRect with checked %d", self.checked);
+    
     if ( self.checked )
         [self drawRectChecked:rect];
     else
@@ -42,6 +44,8 @@
 
 - (void) drawRectChecked: (CGRect) rect
 {
+    NSLog(@"drawRectChecked");
+    
     //// General Declarations
     CGContextRef context = UIGraphicsGetCurrentContext();
     
@@ -90,6 +94,8 @@
 
 - (void) drawRectGrayedOut: (CGRect) rect
 {
+    NSLog(@"drawRectGrayedOut");
+    
     //// General Declarations
     CGContextRef context = UIGraphicsGetCurrentContext();
     
@@ -138,6 +144,8 @@
 
 - (void) drawRectOpenCircle: (CGRect) rect
 {
+    NSLog(@"drawRectOpenCircle");
+    
     //// General Declarations
     CGContextRef context = UIGraphicsGetCurrentContext();
     

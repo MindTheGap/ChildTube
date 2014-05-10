@@ -19,4 +19,6 @@ typedef NS_ENUM( NSUInteger, SSCheckMarkStyle )
 @property (assign, nonatomic) bool checked;
 @property (assign, nonatomic) SSCheckMarkStyle checkMarkStyle;
 
+- (void) drawRect:(CGRect)rect;
+
 @end

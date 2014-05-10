@@ -13,7 +13,8 @@
 
 @interface AddTvSeriesFromResultsViewController ()
 
-@property (strong, nonatomic) NSMutableArray *selectedItems;
+@property (strong, nonatomic) NSMutableArray *selectedTvSeries;
+@property (assign, nonatomic) int numSelected;
 
 @end
 
@@ -28,12 +29,19 @@
     return self;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self.navigationController setToolbarHidden:YES animated:YES];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    [self setSelectedItems:[[NSMutableArray alloc] init]];
+    [self setSelectedTvSeries:[[NSMutableArray alloc] init]];
+    [[self collectionView] setAllowsMultipleSelection:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -67,13 +75,14 @@
     }
     else
     {
-        NSLog(@"Fetching image from path: %@", [tvSeriesObject seriesImagePath]);
+//        NSLog(@"Fetching image from path: %@", [tvSeriesObject seriesImagePath]);
         [imageView setImageWithURL:[NSURL URLWithString:[tvSeriesObject seriesImagePath]]
                   placeholderImage:[UIImage imageNamed:@"anonymous.png"]];
     }
     
     [checkMark setCheckMarkStyle:SSCheckMarkStyleGrayedOut];
     [checkMark setChecked:[tvSeriesObject checked]];
+    NSLog(@"got in to cell for item %d with checked: %d", [indexPath row], [tvSeriesObject checked]);
     
     [label setText:[tvSeriesObject name]];
     
@@ -85,26 +94,44 @@
     // Determine the selected items by using the indexPath
     TvSeries *tvSeries = [[self tvSeriesResultsArray] objectAtIndex:indexPath.row];
     // Add the selected item into the array
-    [[self selectedItems] addObject:tvSeries];
+    [[self selectedTvSeries] addObject:tvSeries];
+    [tvSeries setChecked:YES];
     
-    int currentNum = [[[self numSelectedLabel] text] intValue];
-    [[self numSelectedLabel] setText:[NSString stringWithFormat:@"%d",++currentNum]];
+    UICollectionViewCell *cell = [self collectionView:collectionView cellForItemAtIndexPath:indexPath];
+    SSCheckMark *checkMark = (SSCheckMark *)[cell viewWithTag:300];
+    [checkMark setChecked:YES];
+    
+    [self setNumSelected:[self numSelected] + 1];
+    [self setTitle:[NSString stringWithFormat:@"Adding (%d)", [self numSelected]]];
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     TvSeries *tvSeries = [[self tvSeriesResultsArray] objectAtIndex:indexPath.row];
-    [[self selectedItems] removeObject:tvSeries];
+    [[self selectedTvSeries] removeObject:tvSeries];
+    [tvSeries setChecked:NO];
     
-    int currentNum = [[[self numSelectedLabel] text] intValue];
-    [[self numSelectedLabel] setText:[NSString stringWithFormat:@"%d",--currentNum]];
+    UICollectionViewCell *cell = [self collectionView:collectionView cellForItemAtIndexPath:indexPath];
+    SSCheckMark *checkMark = (SSCheckMark *)[cell viewWithTag:300];
+    [checkMark setChecked:NO];
+    
+    [self setNumSelected:[self numSelected] - 1];
+    if ([self numSelected] >= 1)
+    {
+        [self setTitle:[NSString stringWithFormat:@"Adding (%d)", [self numSelected]]];
+    }
+    else
+    {
+        [self setTitle:@"Adding"];
+    }
 }
 
 - (IBAction)addSelectedButtonClicked:(id)sender
 {
-    if ([[self selectedItems] count] > 0)
+    if ([self numSelected] > 0)
     {
         
+        [[self navigationController] popToRootViewControllerAnimated:YES];
     }
 }
 
