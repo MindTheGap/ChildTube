@@ -47,7 +47,7 @@
     
     self.delegate = (ChildTubeAppDelegate *)[[UIApplication sharedApplication] delegate];
     self.addTvSeriesCollectionViewController = [[self.delegate iPhoneSB] instantiateViewControllerWithIdentifier:@"AddTvSeriesFromResultsIdentifier"];
-
+    [self.addTvSeriesCollectionViewController setMainGridViewController:[self mainGridViewController]];
 }
 
 - (void)didReceiveMemoryWarning

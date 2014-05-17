@@ -17,6 +17,8 @@
 
 @property (strong, nonatomic) ChildTubeAppDelegate *delegate;
 
+@property (strong, nonatomic) NSArray *resultFromAddSelectedViewController;
+
 
 
 

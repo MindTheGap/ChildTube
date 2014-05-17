@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 #import "TvSeries.h"
+#import "Episode.h"
 
 @interface DataEntities : NSObject
 

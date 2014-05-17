@@ -13,7 +13,8 @@
 enum CommandType
 {
     GetAllTvSeries,
-    SearchPhrase
+    SearchPhrase,
+    GetEpisodesForTvSeries
 };
 
 enum ResponseFromServer

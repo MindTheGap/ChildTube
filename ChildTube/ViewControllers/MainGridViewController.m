@@ -11,6 +11,7 @@
 #import "ServerMessageTypes.h"
 #import "DataEntities.h"
 #import "SearchTvSeriesViewController.h"
+#import "VideoPlayerViewController.h"
 
 @interface MainGridViewController ()
 
@@ -33,6 +34,9 @@
 {
     [self.navigationController setToolbarHidden:YES animated:NO];
     [self.navigationController setNavigationBarHidden:YES animated:YES];
+    
+    [[self tvSeriesArray] addObjectsFromArray:[self resultFromAddSelectedViewController]];
+    [[self collectionView] reloadData];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -53,31 +57,38 @@
     
     self.delegate = (ChildTubeAppDelegate *)[[UIApplication sharedApplication] delegate];
     self.searchViewController = [[self.delegate iPhoneSB] instantiateViewControllerWithIdentifier:@"searchTvSeriesViewControllerIdentifier"];
-    [self.searchViewController setDelegate:self];
+    [self.searchViewController setMainGridViewController:self];
     
-    NSDictionary *object = [[NSDictionary alloc] initWithObjectsAndKeys:[NSString stringWithFormat:@"%d", GetAllTvSeries], @"Type", nil];
-    [[self.delegate commManager] sendObject:object completion:^(NSDictionary *json)
-     {
-         NSArray *allTvSeries = [json objectForKey:@"TvSeries"];
-         
-         for (int i = 0; i < [allTvSeries count]; i++) {
-             NSDictionary *tvSeriesDictionary = [allTvSeries objectAtIndex:i];
+    if ([[self tvSeriesArray] count] == 0)
+    {
+        NSDictionary *object = [[NSDictionary alloc] initWithObjectsAndKeys:[NSString stringWithFormat:@"%d", GetAllTvSeries], @"Type", nil];
+        [[self.delegate commManager] sendObject:object completion:^(NSDictionary *json)
+         {
+             NSArray *allTvSeries = [json objectForKey:@"TvSeries"];
              
-             TvSeries *tvSeries = [[TvSeries alloc] init];
+             for (int i = 0; i < [allTvSeries count]; i++) {
+                 NSDictionary *tvSeriesDictionary = [allTvSeries objectAtIndex:i];
+                 
+                 TvSeries *tvSeries = [[TvSeries alloc] init];
+                 
+                 NSString *tvSeriesName = [tvSeriesDictionary objectForKey:@"Name"];
+                 if ([tvSeriesName class] != [NSNull class])
+                     [tvSeries setName:tvSeriesName];
+                 
+                 NSString *tvSeriesImagePath = [tvSeriesDictionary objectForKey:@"SeriesImagePath"];
+                 if ([tvSeriesImagePath class] != [NSNull class])
+                     [tvSeries setSeriesImagePath:tvSeriesImagePath];
+
+                 NSArray *episodes = [tvSeriesDictionary objectForKey:@"Episodes"];
+                 if ([episodes class] != [NSNull class])
+                     [tvSeries setEpisodes:episodes];
+                 
+                 [[self tvSeriesArray] addObject:tvSeries];
+             }
              
-             NSString *tvSeriesName = [tvSeriesDictionary objectForKey:@"Name"];
-             if ([tvSeriesName class] != [NSNull class])
-                 [tvSeries setName:tvSeriesName];
-             
-             NSString *tvSeriesImagePath = [tvSeriesDictionary objectForKey:@"SeriesImagePath"];
-             if ([tvSeriesImagePath class] != [NSNull class])
-                 [tvSeries setSeriesImagePath:tvSeriesImagePath];
-             
-             [[self tvSeriesArray] addObject:tvSeries];
-         }
-         
-         dispatch_async(dispatch_get_main_queue(), ^{ [[self collectionView] reloadData]; });
-     }];
+             dispatch_async(dispatch_get_main_queue(), ^{ [[self collectionView] reloadData]; });
+         }];
+    }
 }
 
 - (IBAction)plusButtonTouched:(id)sender
@@ -125,7 +136,34 @@
     return cell;
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.destinationViewController class] == [VideoPlayerViewController class])
+    {
+        NSIndexPath *indexPath = [self.collectionView indexPathForCell:sender];
+        
+        TvSeries *tvSeriesObject = [[self tvSeriesArray] objectAtIndex:[indexPath row]];
 
+        if ([tvSeriesObject episodes] != nil)
+        {
+            NSDictionary *episode = [[tvSeriesObject episodes] firstObject];
+            if (episode == nil)
+            {
+                NSLog(@"No episodes for this tv series!");
+            }
+            else
+            {
+                VideoPlayerViewController *videoPlayerViewController = (VideoPlayerViewController *)segue.destinationViewController;
+                NSString *urlPath = [episode objectForKey:@"URLPath"];
+                [videoPlayerViewController setUrlPath:urlPath];
+            }
+        }
+        else
+        {
+            NSLog(@"episodes array is nil!");
+        }
+    }
+}
 
 
 

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7601D41619263B1F00ABDFBF /* VideoPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7601D41519263B1F00ABDFBF /* VideoPlayerViewController.m */; };
+		7601D41E19263E9600ABDFBF /* Pods.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 7601D41C19263E9600ABDFBF /* Pods.xcconfig */; };
+		7601D4251927619500ABDFBF /* XCDYouTubeVideoPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7601D4241927619500ABDFBF /* XCDYouTubeVideoPlayerViewController.m */; };
+		7601D42819277B8C00ABDFBF /* Episode.m in Sources */ = {isa = PBXBuildFile; fileRef = 7601D42719277B8C00ABDFBF /* Episode.m */; };
 		76EE1AFD18F1754A0040FA71 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76EE1AFC18F1754A0040FA71 /* Foundation.framework */; };
 		76EE1AFF18F1754A0040FA71 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76EE1AFE18F1754A0040FA71 /* CoreGraphics.framework */; };
 		76EE1B0118F1754A0040FA71 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76EE1B0018F1754A0040FA71 /* UIKit.framework */; };
@@ -77,6 +81,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7601D41419263B1F00ABDFBF /* VideoPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VideoPlayerViewController.h; path = ViewControllers/VideoPlayerViewController.h; sourceTree = "<group>"; };
+		7601D41519263B1F00ABDFBF /* VideoPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VideoPlayerViewController.m; path = ViewControllers/VideoPlayerViewController.m; sourceTree = "<group>"; };
+		7601D41C19263E9600ABDFBF /* Pods.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = ChildTube/Pods.xcconfig; sourceTree = "<group>"; };
+		7601D4231927619500ABDFBF /* XCDYouTubeVideoPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCDYouTubeVideoPlayerViewController.h; sourceTree = "<group>"; };
+		7601D4241927619500ABDFBF /* XCDYouTubeVideoPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCDYouTubeVideoPlayerViewController.m; sourceTree = "<group>"; };
+		7601D42619277B8C00ABDFBF /* Episode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Episode.h; sourceTree = "<group>"; };
+		7601D42719277B8C00ABDFBF /* Episode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Episode.m; sourceTree = "<group>"; };
 		76EE1AF918F1754A0040FA71 /* ChildTube.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChildTube.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76EE1AFC18F1754A0040FA71 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		76EE1AFE18F1754A0040FA71 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -210,6 +221,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7601D41319263AF100ABDFBF /* VideoPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				7601D41419263B1F00ABDFBF /* VideoPlayerViewController.h */,
+				7601D41519263B1F00ABDFBF /* VideoPlayerViewController.m */,
+			);
+			name = VideoPlayer;
+			sourceTree = "<group>";
+		};
+		7601D4221927618E00ABDFBF /* XCDYouTubeVideoPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				7601D4231927619500ABDFBF /* XCDYouTubeVideoPlayerViewController.h */,
+				7601D4241927619500ABDFBF /* XCDYouTubeVideoPlayerViewController.m */,
+			);
+			name = XCDYouTubeVideoPlayer;
+			sourceTree = "<group>";
+		};
 		76EE1AF018F175490040FA71 = {
 			isa = PBXGroup;
 			children = (
@@ -217,6 +246,7 @@
 				76EE1B1B18F1754A0040FA71 /* ChildTubeTests */,
 				76EE1AFB18F1754A0040FA71 /* Frameworks */,
 				76EE1AFA18F1754A0040FA71 /* Products */,
+				7601D41C19263E9600ABDFBF /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -298,6 +328,7 @@
 		76EE1B2E18F180120040FA71 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				7601D41319263AF100ABDFBF /* VideoPlayer */,
 				76EE1BD3191565670040FA71 /* AddTvSeriesFromResults */,
 				76EE1BCF19155BA90040FA71 /* SearchTvSeries */,
 				76EE1BCE19155BA20040FA71 /* MainGrid */,
@@ -308,6 +339,7 @@
 		76EE1B3518F184380040FA71 /* HelperClasses */ = {
 			isa = PBXGroup;
 			children = (
+				7601D4221927618E00ABDFBF /* XCDYouTubeVideoPlayer */,
 				76EE1BD71915686A0040FA71 /* SSCheckMark */,
 			);
 			name = HelperClasses;
@@ -440,6 +472,8 @@
 				76EE1BA91914E5540040FA71 /* TvSeries.m */,
 				76EE1BC11915401B0040FA71 /* DataEntities.h */,
 				76EE1BC21915401B0040FA71 /* DataEntities.m */,
+				7601D42619277B8C00ABDFBF /* Episode.h */,
+				7601D42719277B8C00ABDFBF /* Episode.m */,
 			);
 			path = DataEntities;
 			sourceTree = "<group>";
@@ -602,6 +636,7 @@
 				76EE1B0718F1754A0040FA71 /* InfoPlist.strings in Resources */,
 				76EE1B6618F187DD0040FA71 /* anonymous.png in Resources */,
 				76EE1B2D18F1758A0040FA71 /* Storyboard_iPhone.storyboard in Resources */,
+				7601D41E19263E9600ABDFBF /* Pods.xcconfig in Resources */,
 				76EE1B0F18F1754A0040FA71 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -640,6 +675,7 @@
 				76EE1B801914E52F0040FA71 /* UIButton+AFNetworking.m in Sources */,
 				76EE1B7E1914E52F0040FA71 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				76EE1BD219155BC50040FA71 /* SearchTvSeriesViewController.m in Sources */,
+				7601D41619263B1F00ABDFBF /* VideoPlayerViewController.m in Sources */,
 				76EE1BBC1914E5690040FA71 /* Toast+UIView.m in Sources */,
 				76EE1B6C1914E4F20040FA71 /* CommManager.m in Sources */,
 				76EE1B5F18F1868C0040FA71 /* SDWebImagePrefetcher.m in Sources */,
@@ -654,6 +690,7 @@
 				76EE1B6018F1868C0040FA71 /* UIButton+WebCache.m in Sources */,
 				76EE1B5718F1868C0040FA71 /* MKAnnotationView+WebCache.m in Sources */,
 				76EE1BDA1915688F0040FA71 /* SSCheckMark.m in Sources */,
+				7601D4251927619500ABDFBF /* XCDYouTubeVideoPlayerViewController.m in Sources */,
 				76EE1B9B1914E5360040FA71 /* AFNetworkReachabilityManager.m in Sources */,
 				76EE1BC31915401B0040FA71 /* DataEntities.m in Sources */,
 				76EE1B5818F1868C0040FA71 /* NSData+ImageContentType.m in Sources */,
@@ -664,6 +701,7 @@
 				76EE1BB61914E5540040FA71 /* Greeting.m in Sources */,
 				76EE1B5E18F1868C0040FA71 /* SDWebImageManager.m in Sources */,
 				76EE1BBD1914E5690040FA71 /* UIView+AutoLayout.m in Sources */,
+				7601D42819277B8C00ABDFBF /* Episode.m in Sources */,
 				76EE1B5B18F1868C0040FA71 /* SDWebImageDecoder.m in Sources */,
 				76EE1B5918F1868C0040FA71 /* SDImageCache.m in Sources */,
 			);
@@ -784,10 +822,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Chen Avnery (E68W5R7QT7)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ChildTube/ChildTube-Prefix.pch";
 				INFOPLIST_FILE = "ChildTube/ChildTube-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "E1547D06-459F-4701-9D03-5D7558C91C5A";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -797,10 +837,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Chen Avnery (E68W5R7QT7)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ChildTube/ChildTube-Prefix.pch";
 				INFOPLIST_FILE = "ChildTube/ChildTube-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "E1547D06-459F-4701-9D03-5D7558C91C5A";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -866,6 +908,7 @@
 				76EE1B2718F1754A0040FA71 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		76EE1B2818F1754A0040FA71 /* Build configuration list for PBXNativeTarget "ChildTubeTests" */ = {
 			isa = XCConfigurationList;
@@ -874,6 +917,7 @@
 				76EE1B2A18F1754A0040FA71 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
