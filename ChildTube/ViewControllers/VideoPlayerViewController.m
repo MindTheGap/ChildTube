@@ -7,7 +7,8 @@
 //
 
 #import "VideoPlayerViewController.h"
-#import "XCDYouTubeVideoPlayerViewController.h"
+#import "XCDYouTubeKit.h"
+
 
 @interface VideoPlayerViewController ()
 
@@ -21,19 +22,29 @@
 {
     [super viewDidLoad];
 
-    [self.playerView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+//    [self.playerView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     
-    [self.videoPlayerViewController setPreferredVideoQualities:@[ @(XCDYouTubeVideoQualitySmall240) ]];
-	
-	self.videoPlayerViewController = [[XCDYouTubeVideoPlayerViewController alloc] initWithVideoIdentifier:[self urlPath]];
-	
-	[self.videoPlayerViewController presentInView:self.playerView];
-	
-    [self.videoPlayerViewController.moviePlayer prepareToPlay];
-	
-	self.videoPlayerViewController.moviePlayer.shouldAutoplay = YES;
+//    self.urlPath = @"http://www.nosajsolomon.com/video.mp4";
+//    self.urlPath = @"http://www.youtube.com/watch?v=WhZFNH_A1qA";
+//	NSURL *movieURL = [NSURL URLWithString:[self urlPath]];
+  
+    [self setVideoPlayerViewController:[[XCDYouTubeVideoPlayerViewController alloc] initWithVideoIdentifier:@"WhZFNH_A1qA"]];
+	[self videoPlayerViewController].preferredVideoQualities = @[ @(XCDYouTubeVideoQualitySmall240), @(XCDYouTubeVideoQualityMedium360) ];
+    [[self videoPlayerViewController].view setFrame:CGRectMake([self.playerView frame].origin.x, [self.playerView frame].origin.y, [self.playerView frame].size.width, [self.playerView frame].size.height)];
+    [[self playerView] insertSubview:[self videoPlayerViewController].view belowSubview:[self controlsView]];
+
+    [[self videoPlayerViewController].moviePlayer setControlStyle:MPMovieControlStyleNone];
+
+    [[self videoPlayerViewController].moviePlayer play];
     
-    [self.videoPlayerViewController.moviePlayer setControlStyle:MPMovieControlStyleNone];
+//    self.videoPlayerViewController = [[MPMoviePlayerViewController alloc] initWithContentURL:movieURL];
+//    
+//    [self.playerView addSubview:self.videoPlayerViewController.view];
+//
+//    [self.videoPlayerViewController.moviePlayer prepareToPlay];
+//	
+//	self.videoPlayerViewController.moviePlayer.shouldAutoplay = YES;
+//    
 }
 
 - (IBAction)buttonPressed:(id)sender {
