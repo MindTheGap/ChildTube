@@ -19,6 +19,12 @@
 @property (weak, nonatomic) IBOutlet UIButton *playerMuteButton;
 @property (weak, nonatomic) IBOutlet UISlider *playerVolumeSlider;
 
+@property (weak, nonatomic) IBOutlet UIView *doneView;
+@property (weak, nonatomic) IBOutlet UIButton *doneButton;
+
+@property (weak, nonatomic) IBOutlet UIButton *upperVideoViewButton;
+@property (weak, nonatomic) IBOutlet UIButton *centerVideoViewButton;
+
 @property (strong, nonatomic) NSString *urlPath;
 
 @end
