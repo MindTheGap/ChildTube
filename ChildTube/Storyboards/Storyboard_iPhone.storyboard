@@ -265,6 +265,7 @@
                         <outlet property="controlsView" destination="Dsq-qH-ohj" id="XQc-4g-cJg"/>
                         <outlet property="doneButton" destination="cTu-Ya-Iyr" id="Tet-0V-rc8"/>
                         <outlet property="doneView" destination="wOy-4G-2JX" id="0dq-nm-oGt"/>
+                        <outlet property="entireScreenView" destination="S2Q-Fi-Ypv" id="ZUI-fy-r6q"/>
                         <outlet property="playerMuteButton" destination="QOD-mX-LyL" id="8GF-zD-5Sj"/>
                         <outlet property="playerNextTrackButton" destination="afr-Mw-8Fb" id="cL2-22-XMF"/>
                         <outlet property="playerPlayButton" destination="GKI-8A-ACo" id="NB6-m2-wzb"/>

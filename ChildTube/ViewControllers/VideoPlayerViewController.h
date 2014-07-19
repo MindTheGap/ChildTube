@@ -12,6 +12,7 @@
 
 @property (weak, nonatomic) IBOutlet UIView *playerView;
 @property (weak, nonatomic) IBOutlet UIView *controlsView;
+@property (weak, nonatomic) IBOutlet UIView *entireScreenView;
 @property (weak, nonatomic) IBOutlet UISlider *playerSeekSlider;
 @property (weak, nonatomic) IBOutlet UIButton *playerPlayButton;
 @property (weak, nonatomic) IBOutlet UIButton *playerNextTrackButton;
