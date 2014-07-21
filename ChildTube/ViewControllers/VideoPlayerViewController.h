@@ -17,8 +17,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *playerPlayButton;
 @property (weak, nonatomic) IBOutlet UIButton *playerNextTrackButton;
 @property (weak, nonatomic) IBOutlet UIButton *playerPrevTrackButton;
-@property (weak, nonatomic) IBOutlet UIButton *playerMuteButton;
-@property (weak, nonatomic) IBOutlet UISlider *playerVolumeSlider;
+@property (weak, nonatomic) IBOutlet UILabel *seekCurrentTime;
+@property (weak, nonatomic) IBOutlet UILabel *seekEndTime;
 
 @property (weak, nonatomic) IBOutlet UIView *doneView;
 @property (weak, nonatomic) IBOutlet UIButton *doneButton;

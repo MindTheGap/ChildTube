@@ -16,6 +16,7 @@
 		766E7C18195417680002A9B6 /* XCDYouTubeVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 766E7C0F195417680002A9B6 /* XCDYouTubeVideo.m */; };
 		766E7C19195417680002A9B6 /* XCDYouTubeVideoOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 766E7C12195417680002A9B6 /* XCDYouTubeVideoOperation.m */; };
 		766E7C1A195417680002A9B6 /* XCDYouTubeVideoPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 766E7C14195417680002A9B6 /* XCDYouTubeVideoPlayerViewController.m */; };
+		76938E69197D8D15006E0EE4 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76938E68197D8D15006E0EE4 /* MediaPlayer.framework */; };
 		76EE1AFD18F1754A0040FA71 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76EE1AFC18F1754A0040FA71 /* Foundation.framework */; };
 		76EE1AFF18F1754A0040FA71 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76EE1AFE18F1754A0040FA71 /* CoreGraphics.framework */; };
 		76EE1B0118F1754A0040FA71 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76EE1B0018F1754A0040FA71 /* UIKit.framework */; };
@@ -106,6 +107,7 @@
 		766E7C12195417680002A9B6 /* XCDYouTubeVideoOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XCDYouTubeVideoOperation.m; path = XCDYouTubeKit/XCDYouTubeVideoOperation.m; sourceTree = "<group>"; };
 		766E7C13195417680002A9B6 /* XCDYouTubeVideoPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XCDYouTubeVideoPlayerViewController.h; path = XCDYouTubeKit/XCDYouTubeVideoPlayerViewController.h; sourceTree = "<group>"; };
 		766E7C14195417680002A9B6 /* XCDYouTubeVideoPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XCDYouTubeVideoPlayerViewController.m; path = XCDYouTubeKit/XCDYouTubeVideoPlayerViewController.m; sourceTree = "<group>"; };
+		76938E68197D8D15006E0EE4 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		76EE1AF918F1754A0040FA71 /* ChildTube.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChildTube.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76EE1AFC18F1754A0040FA71 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		76EE1AFE18F1754A0040FA71 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -220,6 +222,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76938E69197D8D15006E0EE4 /* MediaPlayer.framework in Frameworks */,
 				76EE1AFF18F1754A0040FA71 /* CoreGraphics.framework in Frameworks */,
 				76EE1B0118F1754A0040FA71 /* UIKit.framework in Frameworks */,
 				76EE1AFD18F1754A0040FA71 /* Foundation.framework in Frameworks */,
@@ -293,6 +296,7 @@
 		76EE1AFB18F1754A0040FA71 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				76938E68197D8D15006E0EE4 /* MediaPlayer.framework */,
 				76EE1AFC18F1754A0040FA71 /* Foundation.framework */,
 				76EE1AFE18F1754A0040FA71 /* CoreGraphics.framework */,
 				76EE1B0018F1754A0040FA71 /* UIKit.framework */,

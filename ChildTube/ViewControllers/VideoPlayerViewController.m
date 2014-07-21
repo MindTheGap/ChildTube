@@ -36,6 +36,8 @@
 
     [[self videoPlayerViewController] moviePlayer].shouldAutoplay = YES;
     [[self videoPlayerViewController].moviePlayer play];
+    
+    [self.playerPlayButton setTitle:@"||" forState:UIControlStateNormal];
 
     self.seekTimer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(timerUpdateSeekAction:) userInfo:nil repeats:YES];
     
@@ -43,9 +45,8 @@
     CGRect frame = [self activityIndicator].frame;
     NSLog(@"original frame is: %f,%f,%f,%f", frame.origin.x, frame.origin.y, frame.size.width, frame.size.height);
     NSLog(@"view's frame is: %f,%f,%f,%f", [self entireScreenView].frame.origin.x, [self entireScreenView].frame.origin.y, [self entireScreenView].frame.size.width, [self entireScreenView].frame.size.height);
-    
-    frame.origin.x = CGRectGetMidX([self entireScreenView].frame);
-    frame.origin.y = CGRectGetMidY([self entireScreenView].frame);
+    frame.origin.x = CGRectGetMidX([self entireScreenView].frame) - CGRectGetWidth(frame) / 2.0f;
+    frame.origin.y = CGRectGetMidY([self entireScreenView].frame) - CGRectGetHeight(frame) / 2.0f;
     [self activityIndicator].frame = frame;
     NSLog(@"original frame is: %f,%f,%f,%f", frame.origin.x, frame.origin.y, frame.size.width, frame.size.height);
 
@@ -53,18 +54,46 @@
     
     [[self activityIndicator] startAnimating];
     
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration:0.5];
-    [[self doneView] setAlpha:0.0];
-    [[self controlsView] setAlpha:0.0];
-    [UIView commitAnimations];
+    [self hideControlsWithAnimation];
+    
+    [[self playerSeekSlider] addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(sliderTapped:)]];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(moviePreloadDidFinish:)
                                                  name:MPMoviePlayerLoadStateDidChangeNotification
                                                object:[self videoPlayerViewController].moviePlayer];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(movieDurationAvailable:)
+                                                 name:MPMovieDurationAvailableNotification
+                                               object:[self videoPlayerViewController].moviePlayer];
+    
+}
+
+- (void)movieDurationAvailable:(NSNotification *)notification
+{
+    NSTimeInterval duration = [(MPMoviePlayerController *)[notification object] duration];
     
     
+    [[self seekEndTime] setText:[self timeIntervalToHmsFormat:duration]];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:MPMovieDurationAvailableNotification
+                                                  object:[self videoPlayerViewController].moviePlayer];
+}
+
+- (NSString *)timeIntervalToHmsFormat:(NSTimeInterval) interval
+{
+    NSInteger ti = (NSInteger)interval;
+    NSInteger seconds = ti % 60;
+    NSInteger minutes = (ti / 60) % 60;
+    NSInteger hours = (ti / 3600);
+    if (hours > 0)
+    {
+        return [NSString stringWithFormat:@"%02d:%02d:%02d", hours, minutes, seconds];
+    }
+
+    return [NSString stringWithFormat:@"%02d:%02d", minutes, seconds];
 }
 
 - (void)moviePreloadDidFinish:(NSNotification *)notification
@@ -75,17 +104,43 @@
     if (playbackState == MPMovieLoadStatePlayable)
     {
         NSLog(@"playbackState == MPMovieLoadStatePlayable");
-//        [[self activityIndicator] stopAnimating];
+        [[self activityIndicator] stopAnimating];
     }
+}
+
+- (void)sliderTapped:(UIGestureRecognizer *)g
+{
+    UISlider* s = (UISlider*)g.view;
+    if (s.highlighted)
+        return; // tap on thumb, let slider deal with it
+    CGPoint pt = [g locationInView: s];
+    CGFloat percentage = pt.x / s.bounds.size.width;
+    CGFloat delta = percentage * (s.maximumValue - s.minimumValue);
+    CGFloat value = s.minimumValue + delta;
+    [s setValue:value animated:YES];
+    
+    NSString *str=[NSString stringWithFormat:@"%.f",[[self playerSeekSlider] value]];
+    NSLog(str);
+    [[self videoPlayerViewController].moviePlayer setCurrentPlaybackTime:value];
 }
 
 - (void)timerUpdateSeekAction:(NSTimer*)theTimer
 {
     NSTimeInterval currentTime = [[self videoPlayerViewController].moviePlayer currentPlaybackTime];
     [[self playerSeekSlider] setValue:currentTime];
+    
+    [[self seekCurrentTime] setText:[self timeIntervalToHmsFormat:currentTime]];
 }
 
 - (void)timerHideControlsAction:(NSTimer*)theTimer
+{
+    if (self.videoPlayerViewController.moviePlayer.playbackState == MPMoviePlaybackStatePlaying)
+    {
+        [self hideControlsWithAnimation];
+    }
+}
+
+- (void)hideControlsWithAnimation
 {
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:0.5];
@@ -109,6 +164,7 @@
             [self.videoPlayerViewController.moviePlayer play];
             self.seekTimer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(timerUpdateSeekAction:) userInfo:nil repeats:YES];
             [self.playerPlayButton setTitle:@"||" forState:UIControlStateNormal];
+            [NSTimer scheduledTimerWithTimeInterval:2.0f target:self selector:@selector(timerHideControlsAction:) userInfo:nil repeats:NO];
         }
     } else if (sender == self.playerNextTrackButton) {
         NSLog(@"Loading next video in playlist");
