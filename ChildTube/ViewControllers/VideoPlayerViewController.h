@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DataEntities.h"
+
 
 @interface VideoPlayerViewController : UIViewController
 
@@ -19,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *playerPrevTrackButton;
 @property (weak, nonatomic) IBOutlet UILabel *seekCurrentTime;
 @property (weak, nonatomic) IBOutlet UILabel *seekEndTime;
+@property (weak, nonatomic) IBOutlet UILabel *episodeNameLabel;
 
 @property (weak, nonatomic) IBOutlet UIView *doneView;
 @property (weak, nonatomic) IBOutlet UIButton *doneButton;
@@ -26,6 +29,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *upperVideoViewButton;
 @property (weak, nonatomic) IBOutlet UIButton *centerVideoViewButton;
 
-@property (strong, nonatomic) NSString *urlPath;
+@property (strong, nonatomic) Episode *episode;
+@property (strong, nonatomic) TvSeries *tvSeries;
 
 @end

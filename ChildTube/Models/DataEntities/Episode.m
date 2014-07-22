@@ -10,4 +10,18 @@
 
 @implementation Episode
 
+- (Episode *)initWithDictionary:(NSDictionary *)dictionary
+{
+    if (![super init])
+    {
+        return false;
+    }
+    
+    [self setUrlPath:[dictionary objectForKey:@"URLPath"]];
+    [self setEpisodeNumber:[dictionary objectForKey:@"EpisodeNumber"]];
+    [self setSeriesNumber:[dictionary objectForKey:@"SeriesNumber"]];
+    
+    return self;
+}
+
 @end

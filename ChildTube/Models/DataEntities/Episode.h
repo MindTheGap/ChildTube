@@ -10,8 +10,10 @@
 
 @interface Episode : NSObject
 
-@property (assign, nonatomic) int episodeNumber;
-@property (assign, nonatomic) int seriesNumber;
+@property (strong, nonatomic) NSString *episodeNumber;
+@property (strong, nonatomic) NSString *seriesNumber;
 @property (strong, nonatomic) NSString *urlPath;
+
+- (Episode *)initWithDictionary:(NSDictionary *)dictionary;
 
 @end

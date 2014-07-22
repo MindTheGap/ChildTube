@@ -12,6 +12,7 @@
 #import "DataEntities.h"
 #import "SearchTvSeriesViewController.h"
 #import "VideoPlayerViewController.h"
+#import "DataEntities.h"
 
 @interface MainGridViewController ()
 
@@ -154,8 +155,8 @@
             else
             {
                 VideoPlayerViewController *videoPlayerViewController = (VideoPlayerViewController *)segue.destinationViewController;
-                NSString *urlPath = [episode objectForKey:@"URLPath"];
-                [videoPlayerViewController setUrlPath:urlPath];
+                [videoPlayerViewController setEpisode:[[Episode alloc] initWithDictionary:episode]];
+                [videoPlayerViewController setTvSeries:tvSeriesObject];
             }
         }
         else

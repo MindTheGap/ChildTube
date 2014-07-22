@@ -8,13 +8,14 @@
 
 #import "VideoPlayerViewController.h"
 #import "XCDYouTubeKit.h"
+#import "DataEntities.h"
 
 
 @interface VideoPlayerViewController ()
 
 @property (nonatomic, strong) XCDYouTubeVideoPlayerViewController *videoPlayerViewController;
 
-@property (nonatomic, strong) NSTimer *seekTimer;
+@property (nonatomic, strong) NSTimer *hideControlsTimer;
 
 @property (nonatomic, strong) UIActivityIndicatorView *activityIndicator;
 
@@ -25,9 +26,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-//    [self setVideoPlayerViewController:[[XCDYouTubeVideoPlayerViewController alloc] initWithVideoIdentifier:@"WhZFNH_A1qA"]];
-    [self setVideoPlayerViewController:[[XCDYouTubeVideoPlayerViewController alloc] initWithVideoIdentifier:@"tX8OJQqicFw"]];
+    
+    NSString *urlPath = [[self episode] urlPath];
+    NSLog(@"UrlPath = %@", urlPath);
+    [[self episodeNameLabel] setText:[NSString stringWithFormat:@"%@ - Episode %@", [[self tvSeries] name], [[self episode] episodeNumber]]];
+    [[self episodeNameLabel] setTextColor:[UIColor whiteColor]];
+    
+    [self setVideoPlayerViewController:[[XCDYouTubeVideoPlayerViewController alloc] initWithVideoIdentifier:urlPath]];
 	[self videoPlayerViewController].preferredVideoQualities = @[ @(XCDYouTubeVideoQualitySmall240), @(XCDYouTubeVideoQualityMedium360) ];
     [[self videoPlayerViewController].view setFrame:CGRectMake([self.playerView frame].origin.x, [self.playerView frame].origin.y, [self.playerView frame].size.width, [self.playerView frame].size.height)];
     [[self playerView] insertSubview:[self videoPlayerViewController].view belowSubview:[self controlsView]];
@@ -39,7 +44,8 @@
     
     [self.playerPlayButton setTitle:@"||" forState:UIControlStateNormal];
 
-    self.seekTimer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(timerUpdateSeekAction:) userInfo:nil repeats:YES];
+    [[self seekCurrentTime] setText:@"00:00"];
+    [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(timerUpdateSeekAction:) userInfo:nil repeats:YES];
     
     [self setActivityIndicator:[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge]];
     CGRect frame = [self activityIndicator].frame;
@@ -146,6 +152,17 @@
     [UIView setAnimationDuration:0.5];
     [[self doneView] setAlpha:0.0];
     [[self controlsView] setAlpha:0.0];
+    [[self episodeNameLabel] setAlpha:0.0];
+    [UIView commitAnimations];
+}
+
+- (void)showControlsWithAnimation:(CGFloat)newAlpha
+{
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.5];
+    [[self doneView] setAlpha:newAlpha];
+    [[self controlsView] setAlpha:newAlpha];
+    [[self episodeNameLabel] setAlpha:newAlpha];
     [UIView commitAnimations];
 }
 
@@ -155,16 +172,14 @@
         if (self.videoPlayerViewController.moviePlayer.playbackState == MPMoviePlaybackStatePlaying)
         {
             [self.videoPlayerViewController.moviePlayer pause];
-            [self.seekTimer invalidate];
-            self.seekTimer = nil;
             [self.playerPlayButton setTitle:@">" forState:UIControlStateNormal];
+            [self removeHideControlsTimer];
         }
         else if (self.videoPlayerViewController.moviePlayer.playbackState == MPMoviePlaybackStatePaused)
         {
             [self.videoPlayerViewController.moviePlayer play];
-            self.seekTimer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(timerUpdateSeekAction:) userInfo:nil repeats:YES];
             [self.playerPlayButton setTitle:@"||" forState:UIControlStateNormal];
-            [NSTimer scheduledTimerWithTimeInterval:2.0f target:self selector:@selector(timerHideControlsAction:) userInfo:nil repeats:NO];
+            [self setHideControlsTimer];
         }
     } else if (sender == self.playerNextTrackButton) {
         NSLog(@"Loading next video in playlist");
@@ -176,15 +191,11 @@
     else if (sender == self.centerVideoViewButton || sender == self.upperVideoViewButton) {
         NSLog(@"Upper or center video view button was pressed!");
         CGFloat newAlpha = (1.0 - [[self doneView] alpha]);
-        [UIView beginAnimations:nil context:NULL];
-        [UIView setAnimationDuration:0.5];
-        [[self doneView] setAlpha:newAlpha];
-        [[self controlsView] setAlpha:newAlpha];
-        [UIView commitAnimations];
+        [self showControlsWithAnimation:newAlpha];
         
         if (newAlpha == 1.0)
         {
-            [NSTimer scheduledTimerWithTimeInterval:3.0f target:self selector:@selector(timerHideControlsAction:) userInfo:nil repeats:NO];
+            [self setHideControlsTimer];
         }
     }
     else if (sender == self.doneButton)
@@ -192,6 +203,18 @@
         NSLog(@"Done button was pressed!");
         [self dismissViewControllerAnimated:YES completion:nil];
     }
+}
+
+- (void)setHideControlsTimer
+{
+    [self removeHideControlsTimer];
+    [self setHideControlsTimer:[NSTimer scheduledTimerWithTimeInterval:3.0f target:self selector:@selector(timerHideControlsAction:) userInfo:nil repeats:NO]];
+}
+
+- (void)removeHideControlsTimer
+{
+    [[self hideControlsTimer] invalidate];
+    [self setHideControlsTimer:nil];
 }
 
 - (void)didReceiveMemoryWarning
