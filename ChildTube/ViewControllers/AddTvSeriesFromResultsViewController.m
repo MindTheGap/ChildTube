@@ -69,6 +69,9 @@
     SSCheckMark *checkMark = (SSCheckMark *)[cell viewWithTag:300];
     
     TvSeries *tvSeriesObject = [[self tvSeriesResultsArray] objectAtIndex:[indexPath row]];
+    
+    NSLog(@"got in to cell for item %d with checked: %d", [indexPath row], [tvSeriesObject checked]);
+    
     if ([tvSeriesObject seriesImage] != nil)
     {
         [imageView setImage:[tvSeriesObject seriesImage]];
@@ -82,9 +85,20 @@
     
     [checkMark setCheckMarkStyle:SSCheckMarkStyleGrayedOut];
     [checkMark setChecked:[tvSeriesObject checked]];
-    NSLog(@"got in to cell for item %d with checked: %d", [indexPath row], [tvSeriesObject checked]);
+    NSLog(@"Changed to cell for item %d with checked: %d", [indexPath row], [tvSeriesObject checked]);
     
     [label setText:[tvSeriesObject name]];
+    
+    if ([tvSeriesObject checked] == YES)
+    {
+        [cell setSelected:YES];
+        [collectionView selectItemAtIndexPath:indexPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
+    }
+    else
+    {
+        [cell setSelected:NO];
+        [collectionView deselectItemAtIndexPath:indexPath animated:NO];
+    }
     
     return cell;
 }
@@ -97,12 +111,10 @@
     [[self selectedTvSeries] addObject:tvSeries];
     [tvSeries setChecked:YES];
     
-    UICollectionViewCell *cell = [self collectionView:collectionView cellForItemAtIndexPath:indexPath];
-    SSCheckMark *checkMark = (SSCheckMark *)[cell viewWithTag:300];
-    [checkMark setChecked:YES];
+    [collectionView reloadItemsAtIndexPaths:[NSArray arrayWithObject:indexPath]];
     
     [self setNumSelected:[self numSelected] + 1];
-    [self setTitle:[NSString stringWithFormat:@"Adding (%d)", [self numSelected]]];
+    [self setTitle:[NSString stringWithFormat:@"Selected (%d)", [self numSelected]]];
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
@@ -111,14 +123,12 @@
     [[self selectedTvSeries] removeObject:tvSeries];
     [tvSeries setChecked:NO];
     
-    UICollectionViewCell *cell = [self collectionView:collectionView cellForItemAtIndexPath:indexPath];
-    SSCheckMark *checkMark = (SSCheckMark *)[cell viewWithTag:300];
-    [checkMark setChecked:NO];
+    [collectionView reloadItemsAtIndexPaths:[NSArray arrayWithObject:indexPath]];
     
     [self setNumSelected:[self numSelected] - 1];
     if ([self numSelected] >= 1)
     {
-        [self setTitle:[NSString stringWithFormat:@"Adding (%d)", [self numSelected]]];
+        [self setTitle:[NSString stringWithFormat:@"Selected (%d)", [self numSelected]]];
     }
     else
     {
