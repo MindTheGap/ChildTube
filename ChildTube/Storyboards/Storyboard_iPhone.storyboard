@@ -114,9 +114,12 @@
                                         <rect key="frame" x="0.0" y="269" width="569" height="51"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ppR-Co-tpd">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ppR-Co-tpd">
                                                 <rect key="frame" x="209" y="3" width="41" height="44"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="41" id="E62-qm-fz1"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                                 <state key="normal" title="&lt;&lt;">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -125,9 +128,12 @@
                                                     <action selector="buttonPressed:" destination="aym-hk-eC2" eventType="touchUpInside" id="q0T-Wx-356"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="afr-Mw-8Fb">
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="afr-Mw-8Fb">
                                                 <rect key="frame" x="318" y="3" width="41" height="44"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="41" id="7Wy-nC-f3t"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                                 <state key="normal" title=">>">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -136,9 +142,12 @@
                                                     <action selector="buttonPressed:" destination="aym-hk-eC2" eventType="touchUpInside" id="OiK-T1-xzm"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GKI-8A-ACo">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GKI-8A-ACo">
                                                 <rect key="frame" x="264" y="4" width="41" height="44"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="41" id="ORy-6a-8Sm"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                                 <state key="normal" title=">">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -147,7 +156,7 @@
                                                     <action selector="buttonPressed:" destination="aym-hk-eC2" eventType="touchUpInside" id="n3H-Kt-f01"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rG0-P0-Fg9">
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rG0-P0-Fg9">
                                                 <rect key="frame" x="0.0" y="-13" width="190" height="64"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal">
@@ -157,7 +166,7 @@
                                                     <action selector="buttonPressed:" destination="aym-hk-eC2" eventType="touchUpInside" id="lXN-r1-UjP"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UgG-0P-iED">
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UgG-0P-iED">
                                                 <rect key="frame" x="380" y="-10" width="189" height="61"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal">
@@ -170,11 +179,15 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="ppR-Co-tpd" firstAttribute="centerX" secondItem="afr-Mw-8Fb" secondAttribute="centerX" id="7hj-iR-SCC"/>
-                                            <constraint firstItem="ppR-Co-tpd" firstAttribute="centerX" secondItem="GKI-8A-ACo" secondAttribute="centerX" id="a0E-21-rPc"/>
-                                            <constraint firstAttribute="centerX" secondItem="afr-Mw-8Fb" secondAttribute="centerX" id="iID-Uy-vST"/>
-                                            <constraint firstAttribute="centerX" secondItem="ppR-Co-tpd" secondAttribute="centerX" id="oSd-bN-7Nu"/>
-                                            <constraint firstAttribute="centerX" secondItem="GKI-8A-ACo" secondAttribute="centerX" id="wXD-eQ-IfM"/>
+                                            <constraint firstItem="afr-Mw-8Fb" firstAttribute="centerY" secondItem="Dsq-qH-ohj" secondAttribute="centerY" id="0fT-R0-Y3U"/>
+                                            <constraint firstItem="GKI-8A-ACo" firstAttribute="centerX" secondItem="Dsq-qH-ohj" secondAttribute="centerX" id="7GO-kn-py3"/>
+                                            <constraint firstItem="afr-Mw-8Fb" firstAttribute="leading" secondItem="GKI-8A-ACo" secondAttribute="trailing" constant="13" id="9LP-jq-fGA"/>
+                                            <constraint firstItem="GKI-8A-ACo" firstAttribute="top" secondItem="Dsq-qH-ohj" secondAttribute="top" constant="4" id="Bdc-f0-bNz"/>
+                                            <constraint firstItem="ppR-Co-tpd" firstAttribute="baseline" secondItem="afr-Mw-8Fb" secondAttribute="baseline" id="Ni1-ER-jrE"/>
+                                            <constraint firstItem="ppR-Co-tpd" firstAttribute="leading" secondItem="rG0-P0-Fg9" secondAttribute="trailing" constant="19" id="eVU-WA-E0J"/>
+                                            <constraint firstItem="GKI-8A-ACo" firstAttribute="leading" secondItem="ppR-Co-tpd" secondAttribute="trailing" constant="14" id="rd7-gz-Aqp"/>
+                                            <constraint firstItem="UgG-0P-iED" firstAttribute="leading" secondItem="afr-Mw-8Fb" secondAttribute="trailing" constant="21" id="sCK-Ji-qBW"/>
+                                            <constraint firstItem="ppR-Co-tpd" firstAttribute="top" secondItem="Dsq-qH-ohj" secondAttribute="top" constant="3" id="uUL-mv-p82"/>
                                         </constraints>
                                     </view>
                                     <view alpha="0.64999999999999969" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wOy-4G-2JX">

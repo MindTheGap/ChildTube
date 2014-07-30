@@ -17,6 +17,7 @@
 		766E7C19195417680002A9B6 /* XCDYouTubeVideoOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 766E7C12195417680002A9B6 /* XCDYouTubeVideoOperation.m */; };
 		766E7C1A195417680002A9B6 /* XCDYouTubeVideoPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 766E7C14195417680002A9B6 /* XCDYouTubeVideoPlayerViewController.m */; };
 		76938E69197D8D15006E0EE4 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76938E68197D8D15006E0EE4 /* MediaPlayer.framework */; };
+		76938E7E1989455F006E0EE4 /* iToast.m in Sources */ = {isa = PBXBuildFile; fileRef = 76938E7D1989455F006E0EE4 /* iToast.m */; };
 		76EE1AFD18F1754A0040FA71 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76EE1AFC18F1754A0040FA71 /* Foundation.framework */; };
 		76EE1AFF18F1754A0040FA71 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76EE1AFE18F1754A0040FA71 /* CoreGraphics.framework */; };
 		76EE1B0118F1754A0040FA71 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76EE1B0018F1754A0040FA71 /* UIKit.framework */; };
@@ -108,6 +109,8 @@
 		766E7C13195417680002A9B6 /* XCDYouTubeVideoPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XCDYouTubeVideoPlayerViewController.h; path = XCDYouTubeKit/XCDYouTubeVideoPlayerViewController.h; sourceTree = "<group>"; };
 		766E7C14195417680002A9B6 /* XCDYouTubeVideoPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XCDYouTubeVideoPlayerViewController.m; path = XCDYouTubeKit/XCDYouTubeVideoPlayerViewController.m; sourceTree = "<group>"; };
 		76938E68197D8D15006E0EE4 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		76938E7C1989455F006E0EE4 /* iToast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iToast.h; sourceTree = "<group>"; };
+		76938E7D1989455F006E0EE4 /* iToast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iToast.m; sourceTree = "<group>"; };
 		76EE1AF918F1754A0040FA71 /* ChildTube.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChildTube.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76EE1AFC18F1754A0040FA71 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		76EE1AFE18F1754A0040FA71 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -273,6 +276,16 @@
 			path = XCDYouTubeKit;
 			sourceTree = "<group>";
 		};
+		76938E7B1989455F006E0EE4 /* iToast */ = {
+			isa = PBXGroup;
+			children = (
+				76938E7C1989455F006E0EE4 /* iToast.h */,
+				76938E7D1989455F006E0EE4 /* iToast.m */,
+			);
+			name = iToast;
+			path = "toast-notifications-ios-master";
+			sourceTree = "<group>";
+		};
 		76EE1AF018F175490040FA71 = {
 			isa = PBXGroup;
 			children = (
@@ -374,6 +387,7 @@
 		76EE1B3518F184380040FA71 /* HelperClasses */ = {
 			isa = PBXGroup;
 			children = (
+				76938E7B1989455F006E0EE4 /* iToast */,
 				766E7BF01954166F0002A9B6 /* XCDYouTubeKit */,
 				76EE1BD71915686A0040FA71 /* SSCheckMark */,
 			);
@@ -737,6 +751,7 @@
 				76EE1B811914E52F0040FA71 /* UIImageView+AFNetworking.m in Sources */,
 				76EE1BD6191565810040FA71 /* AddTvSeriesFromResultsViewController.m in Sources */,
 				76EE1B6418F1868C0040FA71 /* UIImageView+WebCache.m in Sources */,
+				76938E7E1989455F006E0EE4 /* iToast.m in Sources */,
 				766E7C17195417680002A9B6 /* XCDYouTubePlayerScript.m in Sources */,
 				76EE1BB61914E5540040FA71 /* Greeting.m in Sources */,
 				76EE1B5E18F1868C0040FA71 /* SDWebImageManager.m in Sources */,
