@@ -70,7 +70,7 @@
     
     TvSeries *tvSeriesObject = [[self tvSeriesResultsArray] objectAtIndex:[indexPath row]];
     
-    NSLog(@"got in to cell for item %d with checked: %d", [indexPath row], [tvSeriesObject checked]);
+//    NSLog(@"got in to cell for item %d with checked: %d", [indexPath row], [tvSeriesObject checked]);
     
     if ([tvSeriesObject seriesImage] != nil)
     {
@@ -85,7 +85,7 @@
     
     [checkMark setCheckMarkStyle:SSCheckMarkStyleGrayedOut];
     [checkMark setChecked:[tvSeriesObject checked]];
-    NSLog(@"Changed to cell for item %d with checked: %d", [indexPath row], [tvSeriesObject checked]);
+//    NSLog(@"Changed to cell for item %d with checked: %d", [indexPath row], [tvSeriesObject checked]);
     
     [label setText:[tvSeriesObject name]];
     

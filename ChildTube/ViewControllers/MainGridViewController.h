@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <sqlite3.h>
 #import "ChildTubeAppDelegate.h"
+#import "DBUtils.h"
+
 
 @interface MainGridViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate>
 
@@ -18,6 +21,8 @@
 @property (strong, nonatomic) ChildTubeAppDelegate *delegate;
 
 @property (strong, nonatomic) NSArray *resultFromAddSelectedViewController;
+
+@property (strong, nonatomic) DBUtils *db;
 
 
 

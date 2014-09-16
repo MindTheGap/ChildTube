@@ -9,13 +9,14 @@
 #import <Foundation/Foundation.h>
 #import "ServerMessageTypes.h"
 
-typedef void(^CompletionBlock)(NSDictionary *);
+typedef void(^CompletionBlock)(NSURLResponse *response,
+                               NSData *data, NSError *connectionError);
+
 
 @interface CommManager : NSObject
 
 
-- (void)sendObject:(id)object completion:(CompletionBlock)callback;
-
+-(void)sendObjectWithString:(NSString *)str sendType:(NSString *)sendType body:(NSData *)body completion:(CompletionBlock)callback;
 
 
 @end

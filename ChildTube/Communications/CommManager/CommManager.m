@@ -11,63 +11,25 @@
 #import <Foundation/NSJSONSerialization.h>
 
 #define SERVER_HOST @"http://192.168.175.1:4297/"
+#define SERVER_REST_HOST @"http://192.168.175.1:60086"
 
 
 @implementation CommManager
 
-- (void)sendCommandString:(NSString *)jsonString jsonData:(NSData *)jsonData completion:(CompletionBlock)callback
+
+
+- (void)sendObjectWithString:(NSString *)str sendType:(NSString *)sendType body:(NSData *)body completion:(CompletionBlock)callback
 {
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:SERVER_HOST]];
-    [request setValue:jsonString forHTTPHeaderField:@"json"];
-    [request setHTTPMethod:@"POST"];
-    [request setHTTPBody:jsonData];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/%@", SERVER_REST_HOST, str]];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10.0];
     
-    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+    [request setHTTPMethod:sendType];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:[NSString stringWithFormat:@"%d", [body length]] forHTTPHeaderField:@"Content-Length"];
+    [request setHTTPBody:body];
     
-    NSLog(@"Sending command message: %@", jsonString);
-    
-    [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
-     {
-         if ([data length] > 0 && error == nil)
-         {
-             NSLog(@"Got response from server. calling callback");
-             
-             NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-             
-             callback(json);
-         }
-         else if ([data length] == 0 && error == nil)
-         {
-             NSLog(@"data length is zero and no error");
-         }
-         else if (error != nil && error.code == NSURLErrorTimedOut)
-         {
-             NSLog(@"error code is timed out");
-         }
-         else if (error != nil)
-         {
-             NSLog(@"error is: %@" , [error localizedDescription]);
-         }
-     }];
-}
-
-
-
-- (void)sendObject:(id)object completion:(CompletionBlock)callback
-{
-    NSError *error;
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:object
-                                                       options:0 // Pass 0 if you don't care about the readability of the generated string
-                                                         error:&error];
-    
-    if (! jsonData) {
-        NSLog(@"Trying to send command and got an error while trying to parse to json: %@", error);
-        
-        return;
-    }
-    
-    NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-    [self sendCommandString:jsonString jsonData:jsonData completion:callback];
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:callback];
 }
 
 

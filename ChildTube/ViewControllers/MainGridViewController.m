@@ -62,35 +62,25 @@
     
     if ([[self tvSeriesArray] count] == 0)
     {
-        NSDictionary *object = [[NSDictionary alloc] initWithObjectsAndKeys:[NSString stringWithFormat:@"%d", GetAllTvSeries], @"Type", nil];
-        [[self.delegate commManager] sendObject:object completion:^(NSDictionary *json)
-         {
-             NSArray *allTvSeries = [json objectForKey:@"TvSeries"];
-             
-             for (int i = 0; i < [allTvSeries count]; i++) {
-                 NSDictionary *tvSeriesDictionary = [allTvSeries objectAtIndex:i];
-                 
-                 TvSeries *tvSeries = [[TvSeries alloc] init];
-                 
-                 NSString *tvSeriesName = [tvSeriesDictionary objectForKey:@"Name"];
-                 if ([tvSeriesName class] != [NSNull class])
-                     [tvSeries setName:tvSeriesName];
-                 
-                 NSString *tvSeriesImagePath = [tvSeriesDictionary objectForKey:@"SeriesImagePath"];
-                 if ([tvSeriesImagePath class] != [NSNull class])
-                     [tvSeries setSeriesImagePath:tvSeriesImagePath];
-
-                 NSArray *episodes = [tvSeriesDictionary objectForKey:@"Episodes"];
-                 if ([episodes class] != [NSNull class])
-                     [tvSeries setEpisodes:episodes];
-                 
-                 [[self tvSeriesArray] addObject:tvSeries];
-             }
-             
+        [[self.delegate commManager] sendObjectWithString:@"tvSeries/top?userId=12" sendType:@"GET" body:nil completion:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+            if (data.length > 0 && connectionError == nil)
+            {
+                NSDictionary *greeting = [NSJSONSerialization JSONObjectWithData:data
+                                                                         options:0
+                                                                           error:NULL];
+            }
+            else
+            {
+                NSLog(@"ERROR: MainGridViewController got a bad response from the server");
+                NSLog(@"data.length: %d", data.length);
+                NSLog(@"connectionError: %@", connectionError);
+            }
+                     
              dispatch_async(dispatch_get_main_queue(), ^{ [[self collectionView] reloadData]; });
          }];
     }
 }
+
 
 - (IBAction)plusButtonTouched:(id)sender
 {
@@ -101,6 +91,8 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    
+    [[self db] close];
 }
 
 - (NSInteger) numberOfSectionsInCollectionView:(UICollectionView *)collectionView

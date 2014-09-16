@@ -18,6 +18,14 @@
 		766E7C1A195417680002A9B6 /* XCDYouTubeVideoPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 766E7C14195417680002A9B6 /* XCDYouTubeVideoPlayerViewController.m */; };
 		76938E69197D8D15006E0EE4 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76938E68197D8D15006E0EE4 /* MediaPlayer.framework */; };
 		76938E7E1989455F006E0EE4 /* iToast.m in Sources */ = {isa = PBXBuildFile; fileRef = 76938E7D1989455F006E0EE4 /* iToast.m */; };
+		76938E811989507E006E0EE4 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 76938E801989507E006E0EE4 /* Settings.bundle */; };
+		76938E831993EEF8006E0EE4 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 76938E821993EEF8006E0EE4 /* libsqlite3.dylib */; };
+		76938E901993F759006E0EE4 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 76938E861993F759006E0EE4 /* FMDatabase.m */; };
+		76938E911993F759006E0EE4 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 76938E881993F759006E0EE4 /* FMDatabaseAdditions.m */; };
+		76938E921993F759006E0EE4 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 76938E8A1993F759006E0EE4 /* FMDatabasePool.m */; };
+		76938E931993F759006E0EE4 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 76938E8C1993F759006E0EE4 /* FMDatabaseQueue.m */; };
+		76938E941993F759006E0EE4 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 76938E8F1993F759006E0EE4 /* FMResultSet.m */; };
+		76938E9A1993FF42006E0EE4 /* DBUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 76938E991993FF42006E0EE4 /* DBUtils.m */; };
 		76EE1AFD18F1754A0040FA71 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76EE1AFC18F1754A0040FA71 /* Foundation.framework */; };
 		76EE1AFF18F1754A0040FA71 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76EE1AFE18F1754A0040FA71 /* CoreGraphics.framework */; };
 		76EE1B0118F1754A0040FA71 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76EE1B0018F1754A0040FA71 /* UIKit.framework */; };
@@ -111,6 +119,21 @@
 		76938E68197D8D15006E0EE4 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		76938E7C1989455F006E0EE4 /* iToast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iToast.h; sourceTree = "<group>"; };
 		76938E7D1989455F006E0EE4 /* iToast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iToast.m; sourceTree = "<group>"; };
+		76938E801989507E006E0EE4 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		76938E821993EEF8006E0EE4 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		76938E851993F759006E0EE4 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
+		76938E861993F759006E0EE4 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
+		76938E871993F759006E0EE4 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		76938E881993F759006E0EE4 /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		76938E891993F759006E0EE4 /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabasePool.h; sourceTree = "<group>"; };
+		76938E8A1993F759006E0EE4 /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
+		76938E8B1993F759006E0EE4 /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseQueue.h; sourceTree = "<group>"; };
+		76938E8C1993F759006E0EE4 /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
+		76938E8D1993F759006E0EE4 /* FMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDB.h; sourceTree = "<group>"; };
+		76938E8E1993F759006E0EE4 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
+		76938E8F1993F759006E0EE4 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
+		76938E981993FF42006E0EE4 /* DBUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBUtils.h; sourceTree = "<group>"; };
+		76938E991993FF42006E0EE4 /* DBUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBUtils.m; sourceTree = "<group>"; };
 		76EE1AF918F1754A0040FA71 /* ChildTube.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChildTube.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76EE1AFC18F1754A0040FA71 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		76EE1AFE18F1754A0040FA71 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -225,6 +248,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76938E831993EEF8006E0EE4 /* libsqlite3.dylib in Frameworks */,
 				76938E69197D8D15006E0EE4 /* MediaPlayer.framework in Frameworks */,
 				76EE1AFF18F1754A0040FA71 /* CoreGraphics.framework in Frameworks */,
 				76EE1B0118F1754A0040FA71 /* UIKit.framework in Frameworks */,
@@ -286,6 +310,25 @@
 			path = "toast-notifications-ios-master";
 			sourceTree = "<group>";
 		};
+		76938E841993F759006E0EE4 /* FMDB */ = {
+			isa = PBXGroup;
+			children = (
+				76938E851993F759006E0EE4 /* FMDatabase.h */,
+				76938E861993F759006E0EE4 /* FMDatabase.m */,
+				76938E871993F759006E0EE4 /* FMDatabaseAdditions.h */,
+				76938E881993F759006E0EE4 /* FMDatabaseAdditions.m */,
+				76938E891993F759006E0EE4 /* FMDatabasePool.h */,
+				76938E8A1993F759006E0EE4 /* FMDatabasePool.m */,
+				76938E8B1993F759006E0EE4 /* FMDatabaseQueue.h */,
+				76938E8C1993F759006E0EE4 /* FMDatabaseQueue.m */,
+				76938E8D1993F759006E0EE4 /* FMDB.h */,
+				76938E8E1993F759006E0EE4 /* FMResultSet.h */,
+				76938E8F1993F759006E0EE4 /* FMResultSet.m */,
+			);
+			name = FMDB;
+			path = fmdb;
+			sourceTree = "<group>";
+		};
 		76EE1AF018F175490040FA71 = {
 			isa = PBXGroup;
 			children = (
@@ -309,6 +352,7 @@
 		76EE1AFB18F1754A0040FA71 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				76938E821993EEF8006E0EE4 /* libsqlite3.dylib */,
 				76938E68197D8D15006E0EE4 /* MediaPlayer.framework */,
 				76EE1AFC18F1754A0040FA71 /* Foundation.framework */,
 				76EE1AFE18F1754A0040FA71 /* CoreGraphics.framework */,
@@ -343,6 +387,7 @@
 				76EE1B0518F1754A0040FA71 /* InfoPlist.strings */,
 				76EE1B0818F1754A0040FA71 /* main.m */,
 				76EE1B0A18F1754A0040FA71 /* ChildTube-Prefix.pch */,
+				76938E801989507E006E0EE4 /* Settings.bundle */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -387,6 +432,7 @@
 		76EE1B3518F184380040FA71 /* HelperClasses */ = {
 			isa = PBXGroup;
 			children = (
+				76938E841993F759006E0EE4 /* FMDB */,
 				76938E7B1989455F006E0EE4 /* iToast */,
 				766E7BF01954166F0002A9B6 /* XCDYouTubeKit */,
 				76EE1BD71915686A0040FA71 /* SSCheckMark */,
@@ -523,6 +569,8 @@
 				76EE1BC21915401B0040FA71 /* DataEntities.m */,
 				7601D42619277B8C00ABDFBF /* Episode.h */,
 				7601D42719277B8C00ABDFBF /* Episode.m */,
+				76938E981993FF42006E0EE4 /* DBUtils.h */,
+				76938E991993FF42006E0EE4 /* DBUtils.m */,
 			);
 			path = DataEntities;
 			sourceTree = "<group>";
@@ -688,6 +736,7 @@
 				7601D41E19263E9600ABDFBF /* Pods.xcconfig in Resources */,
 				76EE1B0F18F1754A0040FA71 /* Images.xcassets in Resources */,
 				766E7C15195417680002A9B6 /* Info.plist in Resources */,
+				76938E811989507E006E0EE4 /* Settings.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -722,8 +771,10 @@
 				76EE1B831914E52F0040FA71 /* UIWebView+AFNetworking.m in Sources */,
 				76EE1B9C1914E5360040FA71 /* AFSecurityPolicy.m in Sources */,
 				76EE1B9F1914E5360040FA71 /* AFURLResponseSerialization.m in Sources */,
+				76938E9A1993FF42006E0EE4 /* DBUtils.m in Sources */,
 				76EE1B801914E52F0040FA71 /* UIButton+AFNetworking.m in Sources */,
 				766E7C16195417680002A9B6 /* XCDYouTubeClient.m in Sources */,
+				76938E941993F759006E0EE4 /* FMResultSet.m in Sources */,
 				76EE1B7E1914E52F0040FA71 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				76EE1BD219155BC50040FA71 /* SearchTvSeriesViewController.m in Sources */,
 				7601D41619263B1F00ABDFBF /* VideoPlayerViewController.m in Sources */,
@@ -735,6 +786,7 @@
 				76EE1BB71914E5540040FA71 /* Like.m in Sources */,
 				76EE1BB51914E5540040FA71 /* Comment.m in Sources */,
 				76EE1B9E1914E5360040FA71 /* AFURLRequestSerialization.m in Sources */,
+				76938E911993F759006E0EE4 /* FMDatabaseAdditions.m in Sources */,
 				76EE1B0918F1754A0040FA71 /* main.m in Sources */,
 				76EE1B6318F1868C0040FA71 /* UIImage+WebP.m in Sources */,
 				766E7C18195417680002A9B6 /* XCDYouTubeVideo.m in Sources */,
@@ -745,18 +797,21 @@
 				76EE1BDA1915688F0040FA71 /* SSCheckMark.m in Sources */,
 				766E7C19195417680002A9B6 /* XCDYouTubeVideoOperation.m in Sources */,
 				76EE1B9B1914E5360040FA71 /* AFNetworkReachabilityManager.m in Sources */,
+				76938E901993F759006E0EE4 /* FMDatabase.m in Sources */,
 				76EE1BC31915401B0040FA71 /* DataEntities.m in Sources */,
 				76EE1B5818F1868C0040FA71 /* NSData+ImageContentType.m in Sources */,
 				76EE1B0D18F1754A0040FA71 /* ChildTubeAppDelegate.m in Sources */,
 				76EE1B811914E52F0040FA71 /* UIImageView+AFNetworking.m in Sources */,
 				76EE1BD6191565810040FA71 /* AddTvSeriesFromResultsViewController.m in Sources */,
 				76EE1B6418F1868C0040FA71 /* UIImageView+WebCache.m in Sources */,
+				76938E931993F759006E0EE4 /* FMDatabaseQueue.m in Sources */,
 				76938E7E1989455F006E0EE4 /* iToast.m in Sources */,
 				766E7C17195417680002A9B6 /* XCDYouTubePlayerScript.m in Sources */,
 				76EE1BB61914E5540040FA71 /* Greeting.m in Sources */,
 				76EE1B5E18F1868C0040FA71 /* SDWebImageManager.m in Sources */,
 				76EE1BBD1914E5690040FA71 /* UIView+AutoLayout.m in Sources */,
 				7601D42819277B8C00ABDFBF /* Episode.m in Sources */,
+				76938E921993F759006E0EE4 /* FMDatabasePool.m in Sources */,
 				76EE1B5B18F1868C0040FA71 /* SDWebImageDecoder.m in Sources */,
 				76EE1B5918F1868C0040FA71 /* SDImageCache.m in Sources */,
 			);

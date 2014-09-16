@@ -69,60 +69,59 @@
 - (void)searchTvSeries
 {
     NSDictionary *object = [[NSDictionary alloc] initWithObjectsAndKeys:[NSString stringWithFormat:@"%d", SearchPhrase], @"Type", [[self searchText] text], @"Text", nil];
-    [[self.delegate commManager] sendObject:object completion:^(NSDictionary *json)
-     {
-         NSArray *searchTvSeriesArray = [json objectForKey:@"TvSeriesResults"];
-         NSMutableArray *mutableArray = [[NSMutableArray alloc] init];
-         
-         for (int i = 0; i < [searchTvSeriesArray count]; i++) {
-             NSDictionary *tvSeriesDictionary = [searchTvSeriesArray objectAtIndex:i];
-             
-             NSString *name = [tvSeriesDictionary objectForKey:@"Name"];
-             NSString *tvSeriesImagePath = [tvSeriesDictionary objectForKey:@"SeriesImagePath"];
-             
-             NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K == %@",@"name", name];
-             NSArray *filteredArray = [[[self mainGridViewController] tvSeriesArray] filteredArrayUsingPredicate:predicate];
-             if (filteredArray.count > 0)
-             {
-                 NSLog(@"Main Grid View already contained tv series %@ so skipping", name);
-                 continue;
-             }
-             
-             TvSeries *tvSeries = [[TvSeries alloc] init];
-             
-             if ([name class] != [NSNull class])
-                 [tvSeries setName:name];
-             
-             if ([tvSeriesImagePath class] != [NSNull class])
-                 [tvSeries setSeriesImagePath:tvSeriesImagePath];
-             
-             [tvSeries setChecked:false];
-             
-             [mutableArray addObject:tvSeries];
-         }
-         
-         if ([mutableArray count] > 0)
-         {
-             self.addTvSeriesFromResultsArray = mutableArray;
-             if ([self addTvSeriesCollectionViewController])
-             {
-                 [[self addTvSeriesCollectionViewController] setTvSeriesResultsArray:[self addTvSeriesFromResultsArray]];
-                 dispatch_async(dispatch_get_main_queue(), ^{
-                     [[self navigationController] pushViewController:[self addTvSeriesCollectionViewController] animated:YES];
-                 });
-             }
-         }
-         else
-         {
-             NSLog(@"No Results");
-             dispatch_async(dispatch_get_main_queue(), ^{
-                 [[[[iToast makeText:NSLocalizedString(@"No Results", @"")]
-                    setGravity:iToastGravityCenter] setDuration:2000] show];
-             });
-
-
-         }
-     }];
+//    [[self.delegate commManager] sendObject:object completion:^(NSDictionary *json)
+//     {
+//         NSArray *searchTvSeriesArray = [json objectForKey:@"TvSeriesResults"];
+//         NSMutableArray *mutableArray = [[NSMutableArray alloc] init];
+//         
+//         for (int i = 0; i < [searchTvSeriesArray count]; i++) {
+//             NSDictionary *tvSeriesDictionary = [searchTvSeriesArray objectAtIndex:i];
+//             
+//             NSString *name = [tvSeriesDictionary objectForKey:@"Name"];
+//             NSString *tvSeriesImagePath = [tvSeriesDictionary objectForKey:@"SeriesImagePath"];
+//             
+//             NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K == %@",@"name", name];
+//             NSArray *filteredArray = [[[self mainGridViewController] tvSeriesArray] filteredArrayUsingPredicate:predicate];
+//             if (filteredArray.count > 0)
+//             {
+//                 NSLog(@"Main Grid View already contained tv series %@ so skipping", name);
+//                 continue;
+//             }
+//             
+//             TvSeries *tvSeries = [[TvSeries alloc] init];
+//             
+//             if ([name class] != [NSNull class])
+//                 [tvSeries setName:name];
+//             
+//             if ([tvSeriesImagePath class] != [NSNull class])
+//                 [tvSeries setSeriesImagePath:tvSeriesImagePath];
+//             
+//             [tvSeries setChecked:false];
+//             
+//             [mutableArray addObject:tvSeries];
+//         }
+//         
+//         if ([mutableArray count] > 0)
+//         {
+//             self.addTvSeriesFromResultsArray = mutableArray;
+//             if ([self addTvSeriesCollectionViewController])
+//             {
+//                 [[self addTvSeriesCollectionViewController] setTvSeriesResultsArray:[self addTvSeriesFromResultsArray]];
+//                 dispatch_async(dispatch_get_main_queue(), ^{
+//                     [[self navigationController] pushViewController:[self addTvSeriesCollectionViewController] animated:YES];
+//                 });
+//             }
+//         }
+//         else
+//         {
+//             dispatch_async(dispatch_get_main_queue(), ^{
+//                 [[[[iToast makeText:NSLocalizedString(@"No Results", @"")]
+//                    setGravity:iToastGravityCenter] setDuration:2000] show];
+//             });
+//
+//
+//         }
+//     }];
 }
 
 
