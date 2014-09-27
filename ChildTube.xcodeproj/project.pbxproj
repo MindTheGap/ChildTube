@@ -10,6 +10,17 @@
 		7601D41619263B1F00ABDFBF /* VideoPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7601D41519263B1F00ABDFBF /* VideoPlayerViewController.m */; };
 		7601D41E19263E9600ABDFBF /* Pods.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 7601D41C19263E9600ABDFBF /* Pods.xcconfig */; };
 		7601D42819277B8C00ABDFBF /* Episode.m in Sources */ = {isa = PBXBuildFile; fileRef = 7601D42719277B8C00ABDFBF /* Episode.m */; };
+		7650952119D73457000652E6 /* RegisterationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7650952019D73457000652E6 /* RegisterationViewController.m */; };
+		7650952319D73C46000652E6 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7650952219D73C46000652E6 /* AddressBook.framework */; };
+		7650952519D73C4E000652E6 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7650952419D73C4E000652E6 /* AssetsLibrary.framework */; };
+		7650952719D73C60000652E6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7650952619D73C60000652E6 /* CoreLocation.framework */; };
+		7650952A19D73C71000652E6 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7650952819D73C71000652E6 /* CoreMotion.framework */; };
+		7650952B19D73C71000652E6 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7650952919D73C71000652E6 /* CoreText.framework */; };
+		7650952D19D73C8D000652E6 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7650952C19D73C8D000652E6 /* Security.framework */; };
+		7650952F19D73C96000652E6 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7650952E19D73C96000652E6 /* SystemConfiguration.framework */; };
+		7650953119D73CD2000652E6 /* GooglePlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7650953019D73CD2000652E6 /* GooglePlus.framework */; };
+		7650953319D73CDD000652E6 /* GoogleOpenSource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7650953219D73CDD000652E6 /* GoogleOpenSource.framework */; };
+		7650953519D73CF7000652E6 /* GooglePlus.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7650953419D73CF7000652E6 /* GooglePlus.bundle */; };
 		766E7C15195417680002A9B6 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 766E7C06195417680002A9B6 /* Info.plist */; };
 		766E7C16195417680002A9B6 /* XCDYouTubeClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 766E7C08195417680002A9B6 /* XCDYouTubeClient.m */; };
 		766E7C17195417680002A9B6 /* XCDYouTubePlayerScript.m in Sources */ = {isa = PBXBuildFile; fileRef = 766E7C0D195417680002A9B6 /* XCDYouTubePlayerScript.m */; };
@@ -101,6 +112,18 @@
 		7601D41C19263E9600ABDFBF /* Pods.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = ChildTube/Pods.xcconfig; sourceTree = "<group>"; };
 		7601D42619277B8C00ABDFBF /* Episode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Episode.h; sourceTree = "<group>"; };
 		7601D42719277B8C00ABDFBF /* Episode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Episode.m; sourceTree = "<group>"; };
+		7650951F19D73457000652E6 /* RegisterationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegisterationViewController.h; path = ViewControllers/RegisterationViewController.h; sourceTree = "<group>"; };
+		7650952019D73457000652E6 /* RegisterationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegisterationViewController.m; path = ViewControllers/RegisterationViewController.m; sourceTree = "<group>"; };
+		7650952219D73C46000652E6 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		7650952419D73C4E000652E6 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		7650952619D73C60000652E6 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		7650952819D73C71000652E6 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		7650952919D73C71000652E6 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		7650952C19D73C8D000652E6 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		7650952E19D73C96000652E6 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		7650953019D73CD2000652E6 /* GooglePlus.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GooglePlus.framework; sourceTree = "<group>"; };
+		7650953219D73CDD000652E6 /* GoogleOpenSource.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleOpenSource.framework; sourceTree = "<group>"; };
+		7650953419D73CF7000652E6 /* GooglePlus.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GooglePlus.bundle; sourceTree = "<group>"; };
 		766E7C06195417680002A9B6 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = XCDYouTubeKit/Info.plist; sourceTree = "<group>"; };
 		766E7C07195417680002A9B6 /* XCDYouTubeClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XCDYouTubeClient.h; path = XCDYouTubeKit/XCDYouTubeClient.h; sourceTree = "<group>"; };
 		766E7C08195417680002A9B6 /* XCDYouTubeClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XCDYouTubeClient.m; path = XCDYouTubeKit/XCDYouTubeClient.m; sourceTree = "<group>"; };
@@ -248,11 +271,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				76938E831993EEF8006E0EE4 /* libsqlite3.dylib in Frameworks */,
-				76938E69197D8D15006E0EE4 /* MediaPlayer.framework in Frameworks */,
-				76EE1AFF18F1754A0040FA71 /* CoreGraphics.framework in Frameworks */,
 				76EE1B0118F1754A0040FA71 /* UIKit.framework in Frameworks */,
+				7650952F19D73C96000652E6 /* SystemConfiguration.framework in Frameworks */,
+				7650952D19D73C8D000652E6 /* Security.framework in Frameworks */,
+				76938E69197D8D15006E0EE4 /* MediaPlayer.framework in Frameworks */,
+				7650952A19D73C71000652E6 /* CoreMotion.framework in Frameworks */,
+				7650953119D73CD2000652E6 /* GooglePlus.framework in Frameworks */,
+				7650952B19D73C71000652E6 /* CoreText.framework in Frameworks */,
+				76EE1AFF18F1754A0040FA71 /* CoreGraphics.framework in Frameworks */,
+				7650953319D73CDD000652E6 /* GoogleOpenSource.framework in Frameworks */,
+				7650952719D73C60000652E6 /* CoreLocation.framework in Frameworks */,
 				76EE1AFD18F1754A0040FA71 /* Foundation.framework in Frameworks */,
+				7650952519D73C4E000652E6 /* AssetsLibrary.framework in Frameworks */,
+				7650952319D73C46000652E6 /* AddressBook.framework in Frameworks */,
+				76938E831993EEF8006E0EE4 /* libsqlite3.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,6 +308,15 @@
 				7601D41519263B1F00ABDFBF /* VideoPlayerViewController.m */,
 			);
 			name = VideoPlayer;
+			sourceTree = "<group>";
+		};
+		7650951E19D73435000652E6 /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				7650951F19D73457000652E6 /* RegisterationViewController.h */,
+				7650952019D73457000652E6 /* RegisterationViewController.m */,
+			);
+			name = Registration;
 			sourceTree = "<group>";
 		};
 		766E7BF01954166F0002A9B6 /* XCDYouTubeKit */ = {
@@ -352,6 +393,15 @@
 		76EE1AFB18F1754A0040FA71 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7650953219D73CDD000652E6 /* GoogleOpenSource.framework */,
+				7650953019D73CD2000652E6 /* GooglePlus.framework */,
+				7650952E19D73C96000652E6 /* SystemConfiguration.framework */,
+				7650952C19D73C8D000652E6 /* Security.framework */,
+				7650952819D73C71000652E6 /* CoreMotion.framework */,
+				7650952919D73C71000652E6 /* CoreText.framework */,
+				7650952619D73C60000652E6 /* CoreLocation.framework */,
+				7650952419D73C4E000652E6 /* AssetsLibrary.framework */,
+				7650952219D73C46000652E6 /* AddressBook.framework */,
 				76938E821993EEF8006E0EE4 /* libsqlite3.dylib */,
 				76938E68197D8D15006E0EE4 /* MediaPlayer.framework */,
 				76EE1AFC18F1754A0040FA71 /* Foundation.framework */,
@@ -387,6 +437,7 @@
 				76EE1B0518F1754A0040FA71 /* InfoPlist.strings */,
 				76EE1B0818F1754A0040FA71 /* main.m */,
 				76EE1B0A18F1754A0040FA71 /* ChildTube-Prefix.pch */,
+				7650953419D73CF7000652E6 /* GooglePlus.bundle */,
 				76938E801989507E006E0EE4 /* Settings.bundle */,
 			);
 			name = "Supporting Files";
@@ -421,6 +472,7 @@
 		76EE1B2E18F180120040FA71 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				7650951E19D73435000652E6 /* Registration */,
 				7601D41319263AF100ABDFBF /* VideoPlayer */,
 				76EE1BD3191565670040FA71 /* AddTvSeriesFromResults */,
 				76EE1BCF19155BA90040FA71 /* SearchTvSeries */,
@@ -732,6 +784,7 @@
 			files = (
 				76EE1B0718F1754A0040FA71 /* InfoPlist.strings in Resources */,
 				76EE1B6618F187DD0040FA71 /* anonymous.png in Resources */,
+				7650953519D73CF7000652E6 /* GooglePlus.bundle in Resources */,
 				76EE1B2D18F1758A0040FA71 /* Storyboard_iPhone.storyboard in Resources */,
 				7601D41E19263E9600ABDFBF /* Pods.xcconfig in Resources */,
 				76EE1B0F18F1754A0040FA71 /* Images.xcassets in Resources */,
@@ -802,6 +855,7 @@
 				76EE1B5818F1868C0040FA71 /* NSData+ImageContentType.m in Sources */,
 				76EE1B0D18F1754A0040FA71 /* ChildTubeAppDelegate.m in Sources */,
 				76EE1B811914E52F0040FA71 /* UIImageView+AFNetworking.m in Sources */,
+				7650952119D73457000652E6 /* RegisterationViewController.m in Sources */,
 				76EE1BD6191565810040FA71 /* AddTvSeriesFromResultsViewController.m in Sources */,
 				76EE1B6418F1868C0040FA71 /* UIImageView+WebCache.m in Sources */,
 				76938E931993F759006E0EE4 /* FMDatabaseQueue.m in Sources */,
@@ -933,9 +987,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Chen Avnery (E68W5R7QT7)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ChildTube/ChildTube-Prefix.pch";
 				INFOPLIST_FILE = "ChildTube/ChildTube-Info.plist";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "E1547D06-459F-4701-9D03-5D7558C91C5A";
 				WRAPPER_EXTENSION = app;
@@ -948,9 +1007,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Chen Avnery (E68W5R7QT7)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ChildTube/ChildTube-Prefix.pch";
 				INFOPLIST_FILE = "ChildTube/ChildTube-Info.plist";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "E1547D06-459F-4701-9D03-5D7558C91C5A";
 				WRAPPER_EXTENSION = app;

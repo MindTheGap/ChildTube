@@ -24,6 +24,8 @@
 
 @property (strong, nonatomic) DBUtils *db;
 
+@property (strong, nonatomic) NSString *userId;
+@property (strong, nonatomic) NSString *userEmail;
 
 
 

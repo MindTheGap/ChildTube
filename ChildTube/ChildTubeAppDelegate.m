@@ -7,6 +7,7 @@
 //
 
 #import "ChildTubeAppDelegate.h"
+#import <GooglePlus/GooglePlus.h>
 
 @implementation ChildTubeAppDelegate
 
@@ -55,6 +56,16 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (BOOL)application: (UIApplication *)application
+            openURL: (NSURL *)url
+  sourceApplication: (NSString *)sourceApplication
+         annotation: (id)annotation
+{
+    return [GPPURLHandler handleURL:url
+                  sourceApplication:sourceApplication
+                         annotation:annotation];
 }
 
 @end

@@ -65,9 +65,34 @@
         [[self.delegate commManager] sendObjectWithString:@"tvSeries/top?userId=12" sendType:@"GET" body:nil completion:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
             if (data.length > 0 && connectionError == nil)
             {
-                NSDictionary *greeting = [NSJSONSerialization JSONObjectWithData:data
-                                                                         options:0
-                                                                           error:NULL];
+                NSError *jsonParsingError;
+                NSDictionary *allTvSeries = [NSJSONSerialization JSONObjectWithData:data
+                                                                            options:NSJSONReadingMutableContainers|NSJSONReadingAllowFragments
+                                                                              error:&jsonParsingError];
+                if (jsonParsingError)
+                {
+                    NSLog(@"Error parsing tv series json!");
+                    return;
+                }
+                
+                for (NSDictionary *tvSeriesDictionary in allTvSeries) {
+                    
+                    TvSeries *tvSeries = [[TvSeries alloc] init];
+                    
+                    NSString *tvSeriesName = [tvSeriesDictionary objectForKey:@"Name"];
+                    if ([tvSeriesName class] != [NSNull class])
+                        [tvSeries setName:tvSeriesName];
+                    
+                    NSString *tvSeriesImagePath = [tvSeriesDictionary objectForKey:@"SeriesImagePath"];
+                    if ([tvSeriesImagePath class] != [NSNull class])
+                        [tvSeries setSeriesImagePath:tvSeriesImagePath];
+                    
+                    NSArray *episodes = [tvSeriesDictionary objectForKey:@"Episodes"];
+                    if ([episodes class] != [NSNull class])
+                        [tvSeries setEpisodes:episodes];
+                    
+                    [[self tvSeriesArray] addObject:tvSeries];
+                }
             }
             else
             {

@@ -4,6 +4,39 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
+        <!--Registeration View Controller-->
+        <scene sceneID="Rgp-Te-Pfu">
+            <objects>
+                <viewController storyboardIdentifier="registrationViewControllerStoryboardId" useStoryboardIdentifierAsRestorationIdentifier="YES" id="d25-Cy-mNu" customClass="RegisterationViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hnc-Ta-vB3"/>
+                        <viewControllerLayoutGuide type="bottom" id="gCB-m2-kMt"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2xu-FQ-34S">
+                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gxU-Xf-Xw6" customClass="GPPSignInButton">
+                                <rect key="frame" x="20" y="131" width="218" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Sign in with Google">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Nrg-mD-p5j"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <connections>
+                        <outlet property="signInButton" destination="gxU-Xf-Xw6" id="dQl-jk-R2B"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oBc-Sm-xld" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1316" y="33"/>
+        </scene>
         <!--Main Grid View Controller-->
         <scene sceneID="GEO-yk-GYo">
             <objects>
@@ -27,7 +60,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MainCategoryCell" id="fVg-WH-VtE" customClass="TvSeries">
-                                        <rect key="frame" x="20" y="84" width="142" height="143"/>
+                                        <rect key="frame" x="20" y="20" width="142" height="143"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="142" height="143"/>
@@ -58,7 +91,7 @@
                                     <outlet property="delegate" destination="0Sa-it-Te0" id="QJT-ds-0b1"/>
                                 </connections>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zEU-mw-IFC">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zEU-mw-IFC">
                                 <rect key="frame" x="504" y="256" width="64" height="64"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
@@ -313,7 +346,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="0Sa-it-Te0" kind="relationship" relationship="rootViewController" id="GGb-zo-zc5"/>
+                        <segue destination="d25-Cy-mNu" kind="relationship" relationship="rootViewController" id="jhf-Z7-9Sl"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S4x-gZ-kX6" userLabel="First Responder" sceneMemberID="firstResponder"/>
