@@ -7,7 +7,7 @@
         <!--Registeration View Controller-->
         <scene sceneID="Rgp-Te-Pfu">
             <objects>
-                <viewController storyboardIdentifier="registrationViewControllerStoryboardId" useStoryboardIdentifierAsRestorationIdentifier="YES" id="d25-Cy-mNu" customClass="RegisterationViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RegistrationViewControllerStoryboardId" useStoryboardIdentifierAsRestorationIdentifier="YES" id="d25-Cy-mNu" customClass="RegisterationViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hnc-Ta-vB3"/>
                         <viewControllerLayoutGuide type="bottom" id="gCB-m2-kMt"/>
@@ -16,8 +16,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gxU-Xf-Xw6" customClass="GPPSignInButton">
-                                <rect key="frame" x="20" y="131" width="218" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gxU-Xf-Xw6" customClass="GPPSignInButton">
+                                <rect key="frame" x="175" y="145" width="218" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Sign in with Google">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -40,7 +40,7 @@
         <!--Main Grid View Controller-->
         <scene sceneID="GEO-yk-GYo">
             <objects>
-                <viewController storyboardIdentifier="mainViewControllerID" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0Sa-it-Te0" customClass="MainGridViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainGridViewControllerIdentifier" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0Sa-it-Te0" customClass="MainGridViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="iwe-mp-XQN"/>
                         <viewControllerLayoutGuide type="bottom" id="rIe-qM-W7g"/>
@@ -105,6 +105,16 @@
                                     <action selector="plusButtonTouched:" destination="0Sa-it-Te0" eventType="touchUpInside" id="tpF-bJ-oIQ"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dlO-6V-sqw">
+                                <rect key="frame" x="498" y="6" width="60" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Sign Out">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="signOutButtonClicked:" destination="0Sa-it-Te0" eventType="touchUpInside" id="3PY-sD-GDF"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -121,6 +131,7 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
                         <outlet property="collectionView" destination="Mqi-Gk-46W" id="Mf5-r7-okr"/>
+                        <outlet property="signOutButton" destination="pih-X1-nq0" id="3I8-mI-aHV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nGC-ug-vUv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -345,9 +356,6 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="o3y-ef-MzI">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
-                    <connections>
-                        <segue destination="d25-Cy-mNu" kind="relationship" relationship="rootViewController" id="jhf-Z7-9Sl"/>
-                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S4x-gZ-kX6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

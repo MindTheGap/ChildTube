@@ -46,6 +46,12 @@
     [self.navigationController setNavigationBarHidden:YES animated:YES];
 }
 
+- (IBAction)signOutButtonClicked:(id)sender
+{
+    [[GPPSignIn sharedInstance] signOut];
+    [[[self delegate] navigationController] popViewControllerAnimated:YES];
+}
+
 
 - (void)viewDidLoad
 {

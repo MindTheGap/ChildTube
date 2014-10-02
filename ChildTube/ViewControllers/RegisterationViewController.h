@@ -8,14 +8,15 @@
 
 #import <Foundation/Foundation.h>
 #import "GooglePlus/GooglePlus.h"
-#import "MainGridViewController.h"
+#import "../ChildTubeAppDelegate.h"
+
 
 @class GPPSignInButton;
 
-@interface RegisterationViewController : UIViewController <GPPSignInDelegate>
+@interface RegisterationViewController : UIViewController
 
 @property (retain, nonatomic) IBOutlet GPPSignInButton *signInButton;
 
-@property (strong, nonatomic) MainGridViewController *mainGridViewController;
+@property (strong, nonatomic) ChildTubeAppDelegate *delegate;
 
 @end

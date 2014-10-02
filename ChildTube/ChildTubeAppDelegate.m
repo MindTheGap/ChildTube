@@ -8,8 +8,23 @@
 
 #import "ChildTubeAppDelegate.h"
 #import <GooglePlus/GooglePlus.h>
+#import <GoogleOpenSource/GoogleOpenSource.h>
+#import "MainGridViewController.h"
+#import "RegisterationViewController.h"
+
+
+@interface ChildTubeAppDelegate()
+
+@property (strong, nonatomic) MainGridViewController *mainGridViewController;
+
+@property (strong, nonatomic) RegisterationViewController *registerationViewController;
+
+
+@end
 
 @implementation ChildTubeAppDelegate
+
+static NSString * const kClientId = @"320066392243-egpg9sc1el7i3trnhlea3v64diefrses.apps.googleusercontent.com";
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -22,10 +37,29 @@
     [self setIPhoneSB:[UIStoryboard storyboardWithName:@"Storyboard_iPhone"
                                                   bundle:nil]];
     
-    UICollectionViewController *cvc = [[self iPhoneSB] instantiateViewControllerWithIdentifier:@"mainNavigationControllerID"];
+    self.mainGridViewController = [[self iPhoneSB] instantiateViewControllerWithIdentifier:@"MainGridViewControllerIdentifier"];
+    self.registerationViewController = [[self iPhoneSB] instantiateViewControllerWithIdentifier:@"RegistrationViewControllerStoryboardId"];
     
-    self.window.rootViewController = cvc;
-
+    self.navigationController = [[UINavigationController alloc] initWithRootViewController:self.registerationViewController];
+    
+    self.window.rootViewController = self.navigationController;
+    
+    GPPSignIn *signIn = [GPPSignIn sharedInstance];
+    signIn.shouldFetchGooglePlusUser = YES;
+    signIn.shouldFetchGoogleUserEmail = YES;  // Uncomment to get the user's email
+    
+    // You previously set kClientId in the "Initialize the Google+ client" step
+    signIn.clientID = kClientId;
+    
+    // Uncomment one of these two statements for the scope you chose in the previous step
+    //signIn.scopes = @[ kGTLAuthScopePlusLogin ];  // "https://www.googleapis.com/auth/plus.login" scope
+    signIn.scopes = @[ @"profile" ];            // "profile" scope
+    
+    // Optional: declare signIn.actions, see "app activities"
+    signIn.delegate = self;
+    
+    
+    [signIn trySilentAuthentication];
     
     [self.window makeKeyAndVisible];
     return YES;
@@ -67,5 +101,50 @@
                   sourceApplication:sourceApplication
                          annotation:annotation];
 }
+
+- (void)finishedWithAuth: (GTMOAuth2Authentication *)auth
+                   error: (NSError *) error
+{
+    if (error) {
+        NSLog(@"Received error %@ and auth object %@",error, auth);
+        // Do some error handling here.
+    } else {
+        [self refreshInterfaceBasedOnSignIn];
+    }
+}
+
+-(void)refreshInterfaceBasedOnSignIn
+{
+    if ([[GPPSignIn sharedInstance] authentication]) {
+        // The user is signed in.
+        NSLog(@"calling mainGridViewController");
+        [[self mainGridViewController] setUserId:[[GPPSignIn sharedInstance] userID]];
+        [[self mainGridViewController] setUserEmail:[[GPPSignIn sharedInstance] userEmail]];
+        [[self navigationController] pushViewController:[self mainGridViewController] animated:YES];
+        //self.signInButton.hidden = YES;
+        // Perform other actions here, such as showing a sign-out button
+    } else {
+        NSLog(@"authentication object is nil!");
+        NSLog(@"calling registerationViewController");
+
+        [[self navigationController] pushViewController:[self registerationViewController] animated:YES];
+        //self.signInButton.hidden = NO;
+        // Perform other actions here
+    }
+}
+
+- (void)didDisconnectWithError:(NSError *)error
+{
+    if (error) {
+        NSLog(@"Received error %@", error);
+    } else {
+        // The user is signed out and disconnected.
+        // Clean up user data as specified by the Google+ terms.
+    }
+}
+
+
+
+
 
 @end

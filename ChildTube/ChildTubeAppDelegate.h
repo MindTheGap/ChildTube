@@ -8,14 +8,22 @@
 
 #import <UIKit/UIKit.h>
 #import "CommManager.h"
+#import <GoogleOpenSource/GoogleOpenSource.h>
+#import <GooglePlus/GooglePlus.h>
 
-@interface ChildTubeAppDelegate : UIResponder <UIApplicationDelegate>
+
+@interface ChildTubeAppDelegate : UIResponder <UIApplicationDelegate,GPPSignInDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
 @property (strong, nonatomic) CommManager *commManager;
 
 @property (strong, nonatomic) UIStoryboard *iPhoneSB;
+
+@property (strong, nonatomic) UINavigationController *navigationController;
+
+
+
 
 
 @end

@@ -18,7 +18,7 @@
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
-@property (strong, nonatomic) ChildTubeAppDelegate *delegate;
+@property (weak, nonatomic) ChildTubeAppDelegate *delegate;
 
 @property (strong, nonatomic) NSArray *resultFromAddSelectedViewController;
 
@@ -26,6 +26,7 @@
 
 @property (strong, nonatomic) NSString *userId;
 @property (strong, nonatomic) NSString *userEmail;
+@property (strong, nonatomic) IBOutlet UIView *signOutButton;
 
 
 
