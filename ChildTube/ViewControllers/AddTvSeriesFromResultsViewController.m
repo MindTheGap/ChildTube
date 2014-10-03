@@ -141,7 +141,7 @@
     if ([self numSelected] > 0)
     {
         [[self mainGridViewController] setResultFromAddSelectedViewController:[self selectedTvSeries]];
-        [[self navigationController] popToRootViewControllerAnimated:YES];
+        [[self navigationController] popViewControllerAnimated:YES];
     }
 }
 

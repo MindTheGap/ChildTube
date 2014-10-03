@@ -14,8 +14,9 @@
 - (void)close;
 
 - (BOOL)isTvSeriesExists:(NSString *)tvSeriesName;
-- (sqlite3_int64)addTvSeriesWithName:(NSString *)tvSeriesName imagePath:(NSString *)imagePath image:(UIImage *)image;
-- (sqlite3_int64)addEpisode:(int)episodeNumber seriesNumber:(int)seriesNumber urlPath:(NSString *)urlPath tvSeriesID:(sqlite3_int64)tvSeriesID;
+- (sqlite3_int64)addTvSeriesWithName:(NSString *)tvSeriesName seriesId:(sqlite3_int64)seriesId imagePath:(NSString *)imagePath image:(UIImage *)image;
+- (sqlite3_int64)addEpisode:(int)episodeNumber episodeId:(NSNumber *)episodeId seriesNumber:(int)seriesNumber urlPath:(NSString *)urlPath tvSeriesID:(sqlite3_int64)tvSeriesID;
+- (NSArray *)getTvSeriesArray;
 
 
 @end

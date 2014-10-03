@@ -20,6 +20,10 @@
 
 @property (strong, nonatomic) UIStoryboard *iPhoneSB;
 
+@property (strong, nonatomic) NSString *userId;
+
+@property (strong, nonatomic) NSString *userEmail;
+
 @property (strong, nonatomic) UINavigationController *navigationController;
 
 

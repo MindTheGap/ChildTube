@@ -14,9 +14,25 @@
 
 @property (nonatomic) FMDatabase *mainDB;
 
+@property (strong, nonatomic) NSString *filePath;
+
 @end
 
 @implementation DBUtils
+
+- (void)deleteDb:(NSString *)databasePath
+{
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSError *error;
+    BOOL success = [fileManager removeItemAtPath:databasePath error:&error];
+    if (success) {
+        NSLog(@"Removed the DB");
+    }
+    else
+    {
+        NSLog(@"Could not delete file -:%@ ",[error localizedDescription]);
+    }
+}
 
 - (DBUtils *)init
 {
@@ -25,18 +41,20 @@
     NSString *docsDir = dirPaths[0];
     
     // Build the path to the database file
-    NSString *databasePath = [[NSString alloc]
+    self.filePath = [[NSString alloc]
                                initWithString: [docsDir stringByAppendingPathComponent:
                                                 @"mainDB.db"]];
+    [self setMainDB:[FMDatabase databaseWithPath:self.filePath]];
     
-    [self setMainDB:[FMDatabase databaseWithPath:databasePath]];
-    if ([[self mainDB] open] == false)
+//    [self deleteDb:self.filePath];
+    
+    if ([[self mainDB] open])
     {
-        NSLog(@"Couldn't open the DB file!");
+        [self createTables];
     }
     else
     {
-        [self createTables];
+        NSLog(@"Couldn't open the DB file!");
     }
     
     return self;
@@ -47,7 +65,7 @@
     if ([[self mainDB] executeUpdate:
      @"CREATE TABLE IF NOT EXISTS TvSeries "
      "("
-     "ID INTEGER PRIMARY KEY AUTOINCREMENT, "
+     "ID INTEGER PRIMARY KEY, "
      "Name TEXT, "
      "SeriesImagePath TEXT, "
      "SeriesImage BLOB"
@@ -59,10 +77,11 @@
     if ([[self mainDB] executeUpdate:
      @"CREATE TABLE IF NOT EXISTS Episode "
      "("
-     "ID INTEGER PRIMARY KEY AUTOINCREMENT, "
+     "ID INTEGER PRIMARY KEY, "
      "EpisodeNumber INTEGER, "
      "SeriesNumber INTEGER, "
      "UrlPath TEXT, "
+     "TvSeriesID INTEGER, "
      "FOREIGN KEY (TvSeriesID) REFERENCES TvSeries (ID) "
      ");"] == false)
     {
@@ -101,24 +120,38 @@
     return false;
 }
 
-- (sqlite3_int64)addTvSeriesWithName:(NSString *)tvSeriesName imagePath:(NSString *)imagePath image:(UIImage *)image
+- (sqlite3_int64)addTvSeriesWithName:(NSString *)tvSeriesName seriesId:(sqlite3_int64)seriesId imagePath:(NSString *)imagePath image:(UIImage *)image
 {
-    if ([[self mainDB] executeUpdateWithFormat:@"INSERT INTO TvSeries VALUES (%@,%@,%@)", tvSeriesName, imagePath, image] == false)
+    if (tvSeriesName != nil && imagePath != nil && image != nil)
     {
-        NSLog(@"Couldn't add tv series with name %@. error message: %@", tvSeriesName, [[self mainDB] lastErrorMessage]);
-        return -1;
+        [[self mainDB] beginTransaction];
+        if ([[self mainDB] executeUpdate:@"INSERT INTO TvSeries (ID, Name, SeriesImagePath, SeriesImage) VALUES (?,?,?,?)" withArgumentsInArray:@[[[NSNumber alloc] initWithLongLong:seriesId], tvSeriesName, imagePath, image]] == false)
+        {
+            NSLog(@"Couldn't add tv series with name %@. error message: %@", tvSeriesName, [[self mainDB] lastErrorMessage]);
+            return -1;
+        }
+        [[self mainDB] commit];
+        
+        sqlite3_int64 newId = [[self mainDB] lastInsertRowId];
+        NSLog(@"newId: %lld", newId);
+        return newId;
+    }
+    else
+    {
+        NSLog(@"Some property of tv series was nil");
     }
     
-    return [[self mainDB] lastInsertRowId];
+    return -1;
 }
 
-- (sqlite3_int64)addEpisode:(int)episodeNumber seriesNumber:(int)seriesNumber urlPath:(NSString *)urlPath tvSeriesID:(sqlite3_int64)tvSeriesID
+- (sqlite3_int64)addEpisode:(int)episodeNumber episodeId:(NSNumber *)episodeId seriesNumber:(int)seriesNumber urlPath:(NSString *)urlPath tvSeriesID:(sqlite3_int64)tvSeriesID
 {
-    if ([[self mainDB] executeUpdateWithFormat:@"INSERT INTO Episode VALUES (%d,%d,%@,%lld)", episodeNumber, seriesNumber, urlPath, tvSeriesID] == false)
+    if ([[self mainDB] executeUpdate:@"INSERT INTO Episode (ID, EpisodeNumber, SeriesNumber, UrlPath, TvSeriesID) VALUES (?, ?, ?, ?)" withArgumentsInArray:@[episodeId, [[NSNumber alloc] initWithInt:episodeNumber], [[NSNumber alloc] initWithInt:seriesNumber], urlPath, [[NSNumber alloc] initWithLongLong:tvSeriesID]]] == false)
     {
         NSLog(@"Couldn't add episode number %d. error message: %@", episodeNumber, [[self mainDB] lastErrorMessage]);
         return -1;
     }
+
     
     return [[self mainDB] lastInsertRowId];
 }

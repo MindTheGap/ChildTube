@@ -7,9 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <sqlite3.h>
 
 @interface TvSeries : UICollectionViewCell
 
+@property (assign, nonatomic) sqlite3_int64 ID;
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSString *seriesImagePath;
 @property (strong, nonatomic) UIImage  *seriesImage;

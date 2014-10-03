@@ -7,9 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <sqlite3.h>
 
 @interface Episode : NSObject
 
+@property (assign, nonatomic) sqlite3_int64 ID;
 @property (strong, nonatomic) NSString *episodeNumber;
 @property (strong, nonatomic) NSString *seriesNumber;
 @property (strong, nonatomic) NSString *urlPath;

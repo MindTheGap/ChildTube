@@ -60,15 +60,26 @@
     
     [[self navigationController] setToolbarHidden:YES];
     
-    [self setTvSeriesArray:[[NSMutableArray alloc] init]];
+    [self setDb:[[DBUtils alloc] init]];
     
     self.delegate = (ChildTubeAppDelegate *)[[UIApplication sharedApplication] delegate];
     self.searchViewController = [[self.delegate iPhoneSB] instantiateViewControllerWithIdentifier:@"searchTvSeriesViewControllerIdentifier"];
     [self.searchViewController setMainGridViewController:self];
     
+    NSMutableArray *mutableArray = [[[self db] getTvSeriesArray] mutableCopy];
+    if ([mutableArray count] > 0)
+    {
+        self.tvSeriesArray = mutableArray;
+        NSLog(@"Got %d tv series from local DB", [self.tvSeriesArray count]);
+    }
+    else
+    {
+        [self setTvSeriesArray:[[NSMutableArray alloc] init]];
+    }
+
     if ([[self tvSeriesArray] count] == 0)
     {
-        [[self.delegate commManager] sendObjectWithString:@"tvSeries/top?userId=12" sendType:@"GET" body:nil completion:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        [[self.delegate commManager] sendObjectWithString:[NSString stringWithFormat:@"tvSeries/top?userId=%@",[[self delegate] userId]] sendType:@"GET" body:nil completion:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
             if (data.length > 0 && connectionError == nil)
             {
                 NSError *jsonParsingError;
@@ -96,6 +107,11 @@
                     NSArray *episodes = [tvSeriesDictionary objectForKey:@"Episodes"];
                     if ([episodes class] != [NSNull class])
                         [tvSeries setEpisodes:episodes];
+                    
+                    NSString *tvSeriesId = [tvSeriesDictionary objectForKey:@"TvSeriesID"];
+                    if ([tvSeriesId class] != [NSNull class])
+                        [tvSeries setID:[tvSeriesId longLongValue]];
+                    
                     
                     [[self tvSeriesArray] addObject:tvSeries];
                 }
@@ -150,9 +166,16 @@
     }
     else
     {
-//        NSLog(@"Fetching image from path: %@", [tvSeriesObject seriesImagePath]);
         [imageView setImageWithURL:[NSURL URLWithString:[tvSeriesObject seriesImagePath]]
-                       placeholderImage:[UIImage imageNamed:@"anonymous.png"]];
+                       placeholderImage:[UIImage imageNamed:@"anonymous.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+                           
+                           if ([[self db] isTvSeriesExists:[tvSeriesObject name]] == false)
+                           {
+                               NSLog(@"Adding tv series %@ to DB", [tvSeriesObject name]);
+                               sqlite3_int64 id = [[self db] addTvSeriesWithName:[tvSeriesObject name] seriesId:[tvSeriesObject ID] imagePath:[tvSeriesObject seriesImagePath] image:image];
+                               NSLog(@"new added tv series id: %lld", id);
+                           }
+                       }];
     }
     
     [label setText:[tvSeriesObject name]];

@@ -118,9 +118,28 @@ static NSString * const kClientId = @"320066392243-egpg9sc1el7i3trnhlea3v64diefr
     if ([[GPPSignIn sharedInstance] authentication]) {
         // The user is signed in.
         NSLog(@"calling mainGridViewController");
-        [[self mainGridViewController] setUserId:[[GPPSignIn sharedInstance] userID]];
-        [[self mainGridViewController] setUserEmail:[[GPPSignIn sharedInstance] userEmail]];
-        [[self navigationController] pushViewController:[self mainGridViewController] animated:YES];
+        [self setUserEmail:[[GPPSignIn sharedInstance] userEmail]];
+        NSLog(@"Fetched Email: %@", [self userEmail]);
+        
+        [[self commManager] sendObjectWithString:[NSString stringWithFormat:@"register/%@",[self userEmail]] sendType:@"POST" body:nil completion:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+            if (data.length > 0 && connectionError == nil)
+            {
+                NSError *jsonParsingError;
+                NSDecimalNumber *number = [NSJSONSerialization JSONObjectWithData:data
+                                                                            options:NSJSONReadingMutableContainers|NSJSONReadingAllowFragments
+                                                                              error:&jsonParsingError];
+                if (jsonParsingError)
+                {
+                    NSLog(@"Error parsing tv series json!");
+                    return;
+                }
+                
+                [self setUserId:[NSString stringWithFormat:@"%@",number]];
+                NSLog(@"got an answer after registration: %@", number);
+                [[self navigationController] pushViewController:[self mainGridViewController] animated:YES];
+            }
+        }];
+        
         //self.signInButton.hidden = YES;
         // Perform other actions here, such as showing a sign-out button
     } else {
