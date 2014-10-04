@@ -15,6 +15,7 @@
 @property (strong, nonatomic) NSString *episodeNumber;
 @property (strong, nonatomic) NSString *seriesNumber;
 @property (strong, nonatomic) NSString *urlPath;
+@property (assign, nonatomic) sqlite3_int64 TvSeriesID;
 
 - (Episode *)initWithDictionary:(NSDictionary *)dictionary;
 

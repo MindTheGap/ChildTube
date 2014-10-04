@@ -46,7 +46,7 @@
                                                 @"mainDB.db"]];
     [self setMainDB:[FMDatabase databaseWithPath:self.filePath]];
     
-//    [self deleteDb:self.filePath];
+    [self deleteDb:self.filePath];
     
     if ([[self mainDB] open])
     {

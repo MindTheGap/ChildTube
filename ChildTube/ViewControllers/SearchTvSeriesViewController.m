@@ -70,7 +70,7 @@
 {
     NSString *text = [[self searchText] text];
     if ([text length] == 0) text = @"-1";
-    [[self.delegate commManager] sendObjectWithString:[NSString stringWithFormat:@"tvSeries/search/%@", text] sendType:@"GET" body:nil completion:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+    [[self.delegate commManager] sendObjectWithString:[NSString stringWithFormat:@"tvSeries/search?userId=%@&search=%@", [[self delegate] userId], text] sendType:@"GET" body:nil completion:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         
         NSError *jsonParsingError;
         NSDictionary *allTvSeries = [NSJSONSerialization JSONObjectWithData:data
@@ -88,7 +88,9 @@
             
             NSString *name = [tvSeriesDictionary objectForKey:@"Name"];
             NSString *tvSeriesImagePath = [tvSeriesDictionary objectForKey:@"SeriesImagePath"];
-            
+            NSString *tvSeriesId = [tvSeriesDictionary objectForKey:@"TvSeriesID"];
+            NSArray *episodes = [tvSeriesDictionary objectForKey:@"Episodes"];
+
             NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K == %@",@"name", name];
             NSArray *filteredArray = [[[self mainGridViewController] tvSeriesArray] filteredArrayUsingPredicate:predicate];
             if (filteredArray.count > 0)
@@ -104,6 +106,21 @@
             
             if ([tvSeriesImagePath class] != [NSNull class])
                 [tvSeries setSeriesImagePath:tvSeriesImagePath];
+            
+            if ([tvSeriesId class] != [NSNull class])
+                [tvSeries setID:[tvSeriesId longLongValue]];
+            
+            if ([episodes class] != [NSNull class])
+            {
+                NSMutableArray *episodesArray = [[NSMutableArray alloc] init];
+                for (NSDictionary *dic in episodes)
+                {
+                    Episode *ep = [[Episode alloc] initWithDictionary:dic];
+                    [episodesArray addObject:ep];
+                }
+                
+                [tvSeries setEpisodes:episodesArray];
+            }
             
             [tvSeries setChecked:false];
             

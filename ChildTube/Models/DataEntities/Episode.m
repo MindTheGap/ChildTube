@@ -17,10 +17,12 @@
         return false;
     }
     
+    [self setID:[[dictionary objectForKey:@"EpisodeID"] longLongValue]];
     [self setUrlPath:[dictionary objectForKey:@"URLPath"]];
     [self setEpisodeNumber:[dictionary objectForKey:@"EpisodeNumber"]];
     [self setSeriesNumber:[dictionary objectForKey:@"SeriesNumber"]];
-    
+    [self setTvSeriesID:[[dictionary objectForKey:@"TvSeriesID"] longLongValue]];
+
     return self;
 }
 

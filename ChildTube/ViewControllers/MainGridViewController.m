@@ -37,6 +37,7 @@
     [self.navigationController setNavigationBarHidden:YES animated:YES];
     
     [[self tvSeriesArray] addObjectsFromArray:[self resultFromAddSelectedViewController]];
+    [self setResultFromAddSelectedViewController:nil];
     [[self collectionView] reloadData];
 }
 
@@ -106,7 +107,15 @@
                     
                     NSArray *episodes = [tvSeriesDictionary objectForKey:@"Episodes"];
                     if ([episodes class] != [NSNull class])
-                        [tvSeries setEpisodes:episodes];
+                    {
+                        NSMutableArray *episodesArray = [[NSMutableArray alloc] init];
+                        for (NSDictionary *dic in episodes)
+                        {
+                            Episode *ep = [[Episode alloc] initWithDictionary:dic];
+                            [episodesArray addObject:ep];
+                        }
+                        [tvSeries setEpisodes:episodesArray];
+                    }
                     
                     NSString *tvSeriesId = [tvSeriesDictionary objectForKey:@"TvSeriesID"];
                     if ([tvSeriesId class] != [NSNull class])
@@ -193,7 +202,7 @@
 
         if ([tvSeriesObject episodes] != nil)
         {
-            NSDictionary *episode = [[tvSeriesObject episodes] firstObject];
+            Episode *episode = [[tvSeriesObject episodes] firstObject];
             if (episode == nil)
             {
                 NSLog(@"No episodes for this tv series!");
@@ -201,7 +210,7 @@
             else
             {
                 VideoPlayerViewController *videoPlayerViewController = (VideoPlayerViewController *)segue.destinationViewController;
-                [videoPlayerViewController setEpisode:[[Episode alloc] initWithDictionary:episode]];
+                [videoPlayerViewController setEpisode:episode];
                 [videoPlayerViewController setTvSeries:tvSeriesObject];
             }
         }
