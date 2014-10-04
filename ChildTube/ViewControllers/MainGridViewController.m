@@ -50,6 +50,7 @@
 - (IBAction)signOutButtonClicked:(id)sender
 {
     [[GPPSignIn sharedInstance] signOut];
+    [[self delegate] hideHud];
     [[[self delegate] navigationController] popViewControllerAnimated:YES];
 }
 

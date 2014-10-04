@@ -39,6 +39,8 @@
 		76938E931993F759006E0EE4 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 76938E8C1993F759006E0EE4 /* FMDatabaseQueue.m */; };
 		76938E941993F759006E0EE4 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 76938E8F1993F759006E0EE4 /* FMResultSet.m */; };
 		76938E9A1993FF42006E0EE4 /* DBUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 76938E991993FF42006E0EE4 /* DBUtils.m */; };
+		76C109FB19DFE09900B3AE4B /* Storyboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76C109FD19DFE09900B3AE4B /* Storyboard_iPhone.storyboard */; };
+		76C10A0119DFE3D500B3AE4B /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C10A0019DFE3D500B3AE4B /* MBProgressHUD.m */; };
 		76EE1AFD18F1754A0040FA71 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76EE1AFC18F1754A0040FA71 /* Foundation.framework */; };
 		76EE1AFF18F1754A0040FA71 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76EE1AFE18F1754A0040FA71 /* CoreGraphics.framework */; };
 		76EE1B0118F1754A0040FA71 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76EE1B0018F1754A0040FA71 /* UIKit.framework */; };
@@ -51,7 +53,6 @@
 		76EE1B1818F1754A0040FA71 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76EE1B0018F1754A0040FA71 /* UIKit.framework */; };
 		76EE1B2018F1754A0040FA71 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 76EE1B1E18F1754A0040FA71 /* InfoPlist.strings */; };
 		76EE1B2218F1754A0040FA71 /* ChildTubeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 76EE1B2118F1754A0040FA71 /* ChildTubeTests.m */; };
-		76EE1B2D18F1758A0040FA71 /* Storyboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76EE1B2C18F1758A0040FA71 /* Storyboard_iPhone.storyboard */; };
 		76EE1B5718F1868C0040FA71 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 76EE1B3B18F1868C0040FA71 /* MKAnnotationView+WebCache.m */; };
 		76EE1B5818F1868C0040FA71 /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 76EE1B3D18F1868C0040FA71 /* NSData+ImageContentType.m */; };
 		76EE1B5918F1868C0040FA71 /* SDImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 76EE1B3F18F1868C0040FA71 /* SDImageCache.m */; };
@@ -161,6 +162,9 @@
 		76938E8F1993F759006E0EE4 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
 		76938E981993FF42006E0EE4 /* DBUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBUtils.h; sourceTree = "<group>"; };
 		76938E991993FF42006E0EE4 /* DBUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBUtils.m; sourceTree = "<group>"; };
+		76C109FC19DFE09900B3AE4B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Storyboard_iPhone.storyboard; sourceTree = "<group>"; };
+		76C109FF19DFE3D500B3AE4B /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		76C10A0019DFE3D500B3AE4B /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		76EE1AF918F1754A0040FA71 /* ChildTube.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChildTube.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76EE1AFC18F1754A0040FA71 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		76EE1AFE18F1754A0040FA71 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -177,7 +181,6 @@
 		76EE1B1D18F1754A0040FA71 /* ChildTubeTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ChildTubeTests-Info.plist"; sourceTree = "<group>"; };
 		76EE1B1F18F1754A0040FA71 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		76EE1B2118F1754A0040FA71 /* ChildTubeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChildTubeTests.m; sourceTree = "<group>"; };
-		76EE1B2C18F1758A0040FA71 /* Storyboard_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Storyboard_iPhone.storyboard; path = Storyboards/Storyboard_iPhone.storyboard; sourceTree = "<group>"; };
 		76EE1B3A18F1868C0040FA71 /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
 		76EE1B3B18F1868C0040FA71 /* MKAnnotationView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKAnnotationView+WebCache.m"; sourceTree = "<group>"; };
 		76EE1B3C18F1868C0040FA71 /* NSData+ImageContentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+ImageContentType.h"; sourceTree = "<group>"; };
@@ -374,6 +377,15 @@
 			path = fmdb;
 			sourceTree = "<group>";
 		};
+		76C109FE19DFE3CC00B3AE4B /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				76C109FF19DFE3D500B3AE4B /* MBProgressHUD.h */,
+				76C10A0019DFE3D500B3AE4B /* MBProgressHUD.m */,
+			);
+			name = MBProgressHUD;
+			sourceTree = "<group>";
+		};
 		76EE1AF018F175490040FA71 = {
 			isa = PBXGroup;
 			children = (
@@ -470,7 +482,7 @@
 		76EE1B2B18F1756D0040FA71 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				76EE1B2C18F1758A0040FA71 /* Storyboard_iPhone.storyboard */,
+				76C109FD19DFE09900B3AE4B /* Storyboard_iPhone.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -490,6 +502,7 @@
 		76EE1B3518F184380040FA71 /* HelperClasses */ = {
 			isa = PBXGroup;
 			children = (
+				76C109FE19DFE3CC00B3AE4B /* MBProgressHUD */,
 				76938E841993F759006E0EE4 /* FMDB */,
 				76938E7B1989455F006E0EE4 /* iToast */,
 				766E7BF01954166F0002A9B6 /* XCDYouTubeKit */,
@@ -791,7 +804,7 @@
 				76EE1B0718F1754A0040FA71 /* InfoPlist.strings in Resources */,
 				76EE1B6618F187DD0040FA71 /* anonymous.png in Resources */,
 				7650953519D73CF7000652E6 /* GooglePlus.bundle in Resources */,
-				76EE1B2D18F1758A0040FA71 /* Storyboard_iPhone.storyboard in Resources */,
+				76C109FB19DFE09900B3AE4B /* Storyboard_iPhone.storyboard in Resources */,
 				7601D41E19263E9600ABDFBF /* Pods.xcconfig in Resources */,
 				7650953919DE989C000652E6 /* splash@x2.png in Resources */,
 				76EE1B0F18F1754A0040FA71 /* Images.xcassets in Resources */,
@@ -824,6 +837,7 @@
 				76EE1B821914E52F0040FA71 /* UIProgressView+AFNetworking.m in Sources */,
 				76EE1B9A1914E5360040FA71 /* AFHTTPSessionManager.m in Sources */,
 				76EE1B7F1914E52F0040FA71 /* UIAlertView+AFNetworking.m in Sources */,
+				76C10A0119DFE3D500B3AE4B /* MBProgressHUD.m in Sources */,
 				76EE1B7D1914E52F0040FA71 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				76EE1BB31914E5540040FA71 /* ServerMessageTypes.m in Sources */,
 				76EE1B6118F1868C0040FA71 /* UIImage+GIF.m in Sources */,
@@ -898,6 +912,15 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		76C109FD19DFE09900B3AE4B /* Storyboard_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				76C109FC19DFE09900B3AE4B /* en */,
+			);
+			name = Storyboard_iPhone.storyboard;
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
 		76EE1B0518F1754A0040FA71 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (

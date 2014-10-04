@@ -11,6 +11,7 @@
 #import <GoogleOpenSource/GoogleOpenSource.h>
 #import "MainGridViewController.h"
 #import "RegisterationViewController.h"
+#import "MBProgressHUD.h"
 
 
 @interface ChildTubeAppDelegate()
@@ -18,6 +19,8 @@
 @property (strong, nonatomic) MainGridViewController *mainGridViewController;
 
 @property (strong, nonatomic) RegisterationViewController *registerationViewController;
+
+@property (strong, nonatomic) MBProgressHUD* hud;
 
 
 @end
@@ -38,7 +41,8 @@ static NSString * const kClientId = @"320066392243-egpg9sc1el7i3trnhlea3v64diefr
                                                   bundle:nil]];
     
     self.mainGridViewController = [[self iPhoneSB] instantiateViewControllerWithIdentifier:@"MainGridViewControllerIdentifier"];
-    self.registerationViewController = [[self iPhoneSB] instantiateViewControllerWithIdentifier:@"RegistrationViewControllerStoryboardId"];
+    [self setRegisterationViewController:[[self iPhoneSB] instantiateViewControllerWithIdentifier:@"RegistrationViewControllerStoryboardId"]];
+    
     
     self.navigationController = [[UINavigationController alloc] initWithRootViewController:self.registerationViewController];
     
@@ -59,10 +63,35 @@ static NSString * const kClientId = @"320066392243-egpg9sc1el7i3trnhlea3v64diefr
     signIn.delegate = self;
     
     
-    [signIn trySilentAuthentication];
+    BOOL result = [signIn trySilentAuthentication];
+    NSLog(@"result: %d", result);
+    if (result == YES)
+    {
+        [self showHud];
+    }
     
     [self.window makeKeyAndVisible];
     return YES;
+}
+
+- (void)showHud
+{
+    NSLog(@"showHud");
+    if (self.hud != nil)
+    {
+        [self.hud hide:NO];
+    }
+    else
+    {
+        self.hud = [MBProgressHUD showHUDAddedTo:[self.registerationViewController view] animated:YES];
+        self.hud.labelText = @"Signing In";
+    }
+}
+
+- (void)hideHud
+{
+    NSLog(@"hideHud");
+    [self.hud hide:YES];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
@@ -107,6 +136,8 @@ static NSString * const kClientId = @"320066392243-egpg9sc1el7i3trnhlea3v64diefr
 {
     if (error) {
         NSLog(@"Received error %@ and auth object %@",error, auth);
+        [self hideHud];
+
         // Do some error handling here.
     } else {
         [self refreshInterfaceBasedOnSignIn];
@@ -116,6 +147,8 @@ static NSString * const kClientId = @"320066392243-egpg9sc1el7i3trnhlea3v64diefr
 -(void)refreshInterfaceBasedOnSignIn
 {
     if ([[GPPSignIn sharedInstance] authentication]) {
+        [self showHud];
+        
         // The user is signed in.
         NSLog(@"calling mainGridViewController");
         [self setUserEmail:[[GPPSignIn sharedInstance] userEmail]];
@@ -136,6 +169,7 @@ static NSString * const kClientId = @"320066392243-egpg9sc1el7i3trnhlea3v64diefr
                 
                 [self setUserId:[NSString stringWithFormat:@"%@",number]];
                 NSLog(@"got an answer after registration: %@", number);
+                [self hideHud];
                 [[self navigationController] pushViewController:[self mainGridViewController] animated:YES];
             }
         }];
@@ -146,6 +180,7 @@ static NSString * const kClientId = @"320066392243-egpg9sc1el7i3trnhlea3v64diefr
         NSLog(@"authentication object is nil!");
         NSLog(@"calling registerationViewController");
 
+        [self hideHud];
         [[self navigationController] pushViewController:[self registerationViewController] animated:YES];
         //self.signInButton.hidden = NO;
         // Perform other actions here
@@ -157,6 +192,8 @@ static NSString * const kClientId = @"320066392243-egpg9sc1el7i3trnhlea3v64diefr
     if (error) {
         NSLog(@"Received error %@", error);
     } else {
+        NSLog(@"The user is signed out and disconnected");
+        [self hideHud];
         // The user is signed out and disconnected.
         // Clean up user data as specified by the Google+ terms.
     }

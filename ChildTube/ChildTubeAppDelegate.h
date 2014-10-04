@@ -26,6 +26,9 @@
 
 @property (strong, nonatomic) UINavigationController *navigationController;
 
+- (void)showHud;
+- (void)hideHud;
+
 
 
 

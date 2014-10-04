@@ -19,4 +19,7 @@
 
 @property (strong, nonatomic) ChildTubeAppDelegate *delegate;
 
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *signInGoogleActivityIndicator;
+
+
 @end
