@@ -7,29 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CommManager.h"
-#import <GoogleOpenSource/GoogleOpenSource.h>
-#import <GooglePlus/GooglePlus.h>
+
+static NSString *kNormalRunUserDefaults = @"ChildTubeNormalRun";
 
 
-@interface ChildTubeAppDelegate : UIResponder <UIApplicationDelegate,GPPSignInDelegate>
+@interface ChildTubeAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
-@property (strong, nonatomic) CommManager *commManager;
-
 @property (strong, nonatomic) UIStoryboard *iPhoneSB;
 
-@property (strong, nonatomic) NSString *userId;
-
-@property (strong, nonatomic) NSString *userEmail;
-
-@property (strong, nonatomic) UINavigationController *navigationController;
-
-- (void)showHud;
-- (void)hideHud;
-
-
+@property (strong, nonatomic) NSManagedObjectContext *privateQueueSaveObjectContext;
+@property (strong, nonatomic) NSManagedObjectContext *mainQueueObjectContext;
 
 
 

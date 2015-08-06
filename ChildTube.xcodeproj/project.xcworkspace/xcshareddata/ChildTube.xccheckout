@@ -10,29 +10,29 @@
 	<string>ChildTube</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>41ADF75B-84B5-4091-91A2-402AEC5A292A</key>
+		<key>73A8E02AFF337A2A0AC48764AD7FECACDBA4DB94</key>
 		<string>https://github.com/MindTheGap/ChildTube.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>ChildTube.xcodeproj/project.xcworkspace</string>
+	<string>ChildTube.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>41ADF75B-84B5-4091-91A2-402AEC5A292A</key>
+		<key>73A8E02AFF337A2A0AC48764AD7FECACDBA4DB94</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/MindTheGap/ChildTube.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>41ADF75B-84B5-4091-91A2-402AEC5A292A</string>
+	<string>73A8E02AFF337A2A0AC48764AD7FECACDBA4DB94</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>41ADF75B-84B5-4091-91A2-402AEC5A292A</string>
+			<string>73A8E02AFF337A2A0AC48764AD7FECACDBA4DB94</string>
 			<key>IDESourceControlWCCName</key>
 			<string>ChildTube</string>
 		</dict>
