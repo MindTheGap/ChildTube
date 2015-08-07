@@ -10,6 +10,8 @@
 
 #import "MainScreenViewController.h"
 
+#import "EpisodeListViewController.h"
+
 #import "Playlist.h"
 
 #import "UpdateAdapter.h"
@@ -182,12 +184,16 @@ static NSString *PlaylistCollectionViewCellIdentifier = @"PlaylistCollectionView
 
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-    
+    if ([[segue destinationViewController] class] == [EpisodeListViewController class]) {
+        EpisodeListViewController *episodeListViewController = [segue destinationViewController];
+        NSIndexPath *indexPath = [[self.collectionView indexPathsForSelectedItems] firstObject];
+        Playlist *playlist = [[self fetchedResultsController] objectAtIndexPath:indexPath];
+        
+        [episodeListViewController setPlaylist:playlist];
+    }
     
 }
+
 
 @end

@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "AB04D0B4FDE8AA7E2285A873"
+               BlueprintIdentifier = "D8E23257F6063F3F06BC1F7A"
                BuildableName = "libMRProgress.a"
                BlueprintName = "MRProgress"
                ReferencedContainer = "container:Pods.xcodeproj">

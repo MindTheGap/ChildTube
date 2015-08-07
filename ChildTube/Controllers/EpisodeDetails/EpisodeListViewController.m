@@ -10,6 +10,8 @@
 
 #import "EpisodeListViewController.h"
 
+#import "VideoPlayerViewController.h"
+
 #import "Episode.h"
 #import "Playlist.h"
 
@@ -45,6 +47,15 @@ static NSString *EpisodeTableViewCellIdentifier = @"EpisodeTableViewCellIdentifi
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self.navigationController setNavigationBarHidden:NO];
+
+//    UIBarButtonItem *playAll = [[UIBarButtonItem alloc] initWithTitle:@"Play All" style:UIBarButtonItemStylePlain target:self action:@selector(playAllButtonTouched:)];
+//    UIBarButtonItem *addToFavourits = [[UIBarButtonItem alloc] initWithImage:nil landscapeImagePhone:[UIImage imageNamed:@"star-gray"] style:UIBarButtonItemStylePlain target:self action:@selector(addToFavouritsButtonTouched:)];
+//    [[[self.navigationController navigationBar] topItem] setRightBarButtonItems:@[addToFavourits, playAll]];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -149,7 +160,17 @@ static NSString *EpisodeTableViewCellIdentifier = @"EpisodeTableViewCellIdentifi
 
 
 
-
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([[segue destinationViewController] class] == [VideoPlayerViewController class]) {
+        VideoPlayerViewController *videoPlayerViewController = [segue destinationViewController];
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        Episode *episode = [[self fetchedResultsController] objectAtIndexPath:indexPath];
+        
+        [videoPlayerViewController setPlaylist:self.playlist];
+        [videoPlayerViewController setEpisode:episode];
+    }
+    
+}
 
 
 

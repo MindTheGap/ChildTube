@@ -28,6 +28,7 @@ static NSString *kStoreName = @"EntityModel";
 @property BOOL coreDataStackSetupFinished;
 
 
+
 @end
 
 @implementation ChildTubeAppDelegate

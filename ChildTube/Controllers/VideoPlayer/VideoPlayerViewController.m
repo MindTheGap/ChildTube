@@ -11,18 +11,14 @@
 #import "VideoPlayerViewController.h"
 
 #import "YTPlayerView.h"
+#import <MediaPlayer/MediaPlayer.h>
 
 #import "Playlist.h"
 #import "Episode.h"
 
-#define youtubeVideoPlayUrl2 @"<html><body style='margin:0px;padding:0px;'><script type='text/javascript' src='http://www.youtube.com/iframe_api'></script><script type='text/javascript'>function onYouTubeIframeAPIReady(){ytplayer=new YT.Player('playerId',{events:{onReady:onPlayerReady}})}function onPlayerReady(a){ a.target.playVideo(); }</script><iframe id='playerId' type='text/html' width='%f' height='%f' src='http://www.youtube.com/embed/%@?enablejsapi=1&rel=0&playsinline=1&autoplay=1&version=3&modestbranding=0&controls=0&showinfo=0' frameborder='0'></body></html>"
-
+#define kVisibleAlphaForViews 0.75
 
 @interface VideoPlayerViewController ()
-
-@property (strong, nonatomic) Episode *currentEpisode;
-
-@property (strong, nonatomic) NSArray *allEpisodes;
 
 @end
 
@@ -31,23 +27,53 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.allEpisodes = [[self.playlist episodes] sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"id" ascending:YES]]];
-    
-    self.currentEpisode = [self.allEpisodes firstObject];
-    
     self.playerView.delegate = self;
+    
+    [self.topView setAlpha:kVisibleAlphaForViews];
+    [self.bottomView setAlpha:kVisibleAlphaForViews];
+    
+    [self.mpVolumeView setBackgroundColor:[UIColor clearColor]];
+    [self.mpVolumeView setShowsRouteButton:NO];
+    
+    UITapGestureRecognizer *coverViewGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(coverViewTouched:)];
+    [self.coverView addGestureRecognizer:coverViewGestureRecognizer];
+    
+    [self playYoutubeVideoWithUrl:[self.episode urlPath]];
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self.navigationController setNavigationBarHidden:YES];
+}
+
+- (void)coverViewTouched:(UITapGestureRecognizer *)recognizer
+{
+    if ([self.topView alpha]) {
+        [UIView animateWithDuration:0.5 animations:^{
+            [self.topView setAlpha:0.0];
+            [self.bottomView setAlpha:0.0];
+        }];
+    } else {
+        [UIView animateWithDuration:0.5 animations:^{
+            [self.topView setAlpha:kVisibleAlphaForViews];
+            [self.bottomView setAlpha:kVisibleAlphaForViews];
+        }];
+    }
 }
 
 - (void)playYoutubeVideoWithUrl:(NSString *)urlPath
 {
     NSDictionary *playerVars = @{
                                  @"playsinline" : @1,
-                                 @"autoplay" : @1,
-                                 @"modestbranding" : @0,
+                                 @"version" : @3,
+                                 @"modestbranding" : @1,
                                  @"controls" : @0,
                                  @"showinfo" : @0,
                                  @"rel" : @0
                                  };
+    
+    NSLog(@"Playing video url path: %@", urlPath);
     [self.playerView loadWithVideoId:urlPath playerVars:playerVars];
 }
 
@@ -56,6 +82,39 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)playButtonTouched:(id)sender
+{
+    if ([self.playerView playerState] == kYTPlayerStatePlaying || [self.playerView playerState] == kYTPlayerStateBuffering) {
+        NSLog(@"Changing pause button to play");
+        [UIView animateWithDuration:0.5 animations:^{
+            [self.playButton setImage:[UIImage imageNamed:@"play.png"] forState:UIControlStateNormal];
+        }];
+        
+        [self.playerView pauseVideo];
+    } else {
+        NSLog(@"Changing play button to pause");
+        [UIView animateWithDuration:0.5 animations:^{
+            [self.playButton setImage:[UIImage imageNamed:@"pause.png"] forState:UIControlStateNormal];
+        }];
+
+        [self.playerView playVideo];
+    }
+}
+
+- (IBAction)ffwButtonTouched:(id)sender
+{
+    
+}
+
+- (IBAction)rewButtonTouched:(id)sender
+{
+    
+}
+
+- (IBAction)soundButtonTouched:(id)sender
+{
+    
+}
 
 - (IBAction)doneButtonTouched:(id)sender
 {
@@ -64,9 +123,7 @@
 
 - (IBAction)sliderValueChanged:(id)sender
 {
-    if (sender == self.volSlider) {
-        
-    } else if (sender == self.seekSlider) {
+    if (sender == self.seekSlider) {
         
     }
 }
@@ -82,6 +139,11 @@
         default:
             break;
     }
+}
+
+- (void)playerViewDidBecomeReady:(YTPlayerView *)playerView
+{
+    [self.playerView playVideo];
 }
 
 - (void)playerView:(YTPlayerView *)playerView receivedError:(YTPlayerError)error

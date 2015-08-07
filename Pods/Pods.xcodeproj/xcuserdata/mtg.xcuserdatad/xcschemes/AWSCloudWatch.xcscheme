@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D22CEC5A20375867EC182855"
+               BlueprintIdentifier = "51D7F9EAF9BF9221B09CBAA6"
                BuildableName = "libAWSCloudWatch.a"
                BlueprintName = "AWSCloudWatch"
                ReferencedContainer = "container:Pods.xcodeproj">

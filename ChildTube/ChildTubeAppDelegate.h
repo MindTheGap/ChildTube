@@ -21,5 +21,4 @@ static NSString *kNormalRunUserDefaults = @"ChildTubeNormalRun";
 @property (strong, nonatomic) NSManagedObjectContext *mainQueueObjectContext;
 
 
-
 @end
