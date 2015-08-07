@@ -143,6 +143,7 @@ PODS:
   - UCZProgressView (1.0.2)
   - UIActivityIndicator-for-SDWebImage (1.2):
     - SDWebImage (~> 3.7)
+  - youtube-ios-player-helper (0.1.3)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.4)
@@ -157,6 +158,7 @@ DEPENDENCIES:
   - SDWebImage (~> 3.7)
   - UCZProgressView
   - UIActivityIndicator-for-SDWebImage
+  - youtube-ios-player-helper
 
 SPEC CHECKSUMS:
   AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
@@ -185,5 +187,6 @@ SPEC CHECKSUMS:
   SDWebImage: 1d2b1a1efda1ade1b00b6f8498865f8ddedc8a84
   UCZProgressView: 55836987c15ee6efb7cd6dfe297556602ee46c94
   UIActivityIndicator-for-SDWebImage: 7bf7ebbf0ed1747dedc0d6e949c4603a6d0f9e0c
+  youtube-ios-player-helper: fccae0f10449976a025a95328e3c42ab521f93cb
 
 COCOAPODS: 0.38.2

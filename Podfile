@@ -10,6 +10,7 @@ pod 'AFNetworking', '~> 2.4'
 pod 'iToast'
 pod 'UCZProgressView'
 pod 'RMStore'
+pod "youtube-ios-player-helper"
 
 pod 'SDWebImage', '~>3.7'
 pod 'UIActivityIndicator-for-SDWebImage'

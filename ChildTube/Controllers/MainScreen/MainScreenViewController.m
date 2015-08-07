@@ -17,7 +17,7 @@
 #import "PlaylistCollectionViewCell.h"
 
 
-static NSString *PlaylistCellIdentifier = @"PlaylistCellIdentifier";
+static NSString *PlaylistCollectionViewCellIdentifier = @"PlaylistCollectionViewCellIdentifier";
 
 
 
@@ -88,21 +88,16 @@ static NSString *PlaylistCellIdentifier = @"PlaylistCellIdentifier";
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return [[[self fetchedResultsController] fetchedObjects] count] + 1;
+    return [[[self fetchedResultsController] fetchedObjects] count];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     UICollectionViewCell *cell = nil;
     
-    NSInteger row = [indexPath row];
-    if (row == [[[self fetchedResultsController] fetchedObjects] count]) {
-        cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"AddPlaylistCollectionViewCellIdentifier" forIndexPath:indexPath];
-    } else {
-        cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PlaylistCollectionViewCellIdentifier" forIndexPath:indexPath];
-        
-        [self configureCell:(PlaylistCollectionViewCell *)cell atIndexPath:indexPath];
-    }
+    cell = [collectionView dequeueReusableCellWithReuseIdentifier:PlaylistCollectionViewCellIdentifier forIndexPath:indexPath];
+    
+    [self configureCell:(PlaylistCollectionViewCell *)cell atIndexPath:indexPath];
     
     return cell;
 }

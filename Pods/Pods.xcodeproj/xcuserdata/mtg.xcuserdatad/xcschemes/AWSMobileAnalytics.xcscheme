@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9BA3F685AD7275BD7603C60D"
+               BlueprintIdentifier = "57609F39B2419975C47E8EE7"
                BuildableName = "libAWSMobileAnalytics.a"
                BlueprintName = "AWSMobileAnalytics"
                ReferencedContainer = "container:Pods.xcodeproj">

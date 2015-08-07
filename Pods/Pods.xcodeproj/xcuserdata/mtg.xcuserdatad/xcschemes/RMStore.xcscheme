@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8490173606B69BB17A10C5B0"
+               BlueprintIdentifier = "464F6DE21DEB09937BD6CF24"
                BuildableName = "libRMStore.a"
                BlueprintName = "RMStore"
                ReferencedContainer = "container:Pods.xcodeproj">
